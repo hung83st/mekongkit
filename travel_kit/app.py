@@ -42,7 +42,7 @@ def generate_qr(location_id):
         "Den_Vua_Hung": "den-vua-hung"
     }
     # URL đầy đủ cho check-in
-    url = f"http://172.16.3.40:5000/{url_map.get(location_id, 'ben-ninh-kieu')}"
+    url = f"http://localhost:5000/{url_map.get(location_id, 'ben-ninh-kieu')}"
     qr = qrcode.QRCode(box_size=5, border=2)
     qr.add_data(url)
     qr.make(fit=True)
