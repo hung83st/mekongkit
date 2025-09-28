@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+<h2>✨ Chào mừng đến với Smart Travel Kit! ✨</h2>
+<p>Trải nghiệm văn hóa đa dạng <b>Kinh</b>, <b>Khmer</b>, <b>Hoa</b> ngay tại Cần Thơ.  
+    Check-in, tích điểm, nhận quà và tham gia mini-game cực vui!</p>
+<a href="{{ url_for('register') }}">🚀 Đăng ký ngay</a> hoặc 
+<a href="{{ url_for('login') }}">🔑 Đăng nhập</a> để bắt đầu.
+{% endblock %}

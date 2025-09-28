@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Đăng ký{% endblock %}
+
+{% block content %}
+<h2>Đăng ký tài khoản</h2>
+<form method="POST">
+    <label for="username">Tên tài khoản:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label for="password">Mật khẩu:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">Đăng ký</button>
+</form>
+<p>Đã có tài khoản? <a href="{{ url_for('login') }}">Đăng nhập</a></p>
+{% endblock %}

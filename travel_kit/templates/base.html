@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Travel Kit{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Smart Travel Kit - Khám phá văn hóa Cần Thơ</h1>
+        {% if session.get('user_id') %}
+        <nav>
+            <a href="{{ url_for('dashboard') }}">🏠 Dashboard</a> |
+            <a href="{{ url_for('logout') }}">🚪 Đăng xuất</a>
+        </nav>
+        {% else %}
+        <nav>
+            <a href="{{ url_for('login') }}">🔑 Đăng nhập</a> |
+            <a href="{{ url_for('register') }}">📝 Đăng ký</a>
+        </nav>
+        {% endif %}
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2025 Travel Kit Team</p>
+    </footer>
+</body>
+</html>

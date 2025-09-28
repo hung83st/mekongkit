@@ -1,0 +1,117 @@
+/* Reset mặc định */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: #ff6f61;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: #ffe082;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    color: #d84315;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+a.button, button {
+    display: inline-block;
+    background: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+a.button:hover, button:hover {
+    background: #e64a19;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #ff6f61;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* QR Code hiển thị đẹp */
+.qr-container {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* Form */
+form {
+    text-align: left;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+form input, form button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+/* Thông báo lỗi */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
