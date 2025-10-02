@@ -102,7 +102,7 @@ def dashboard():
     # locations = ['Ben_Ninh_Kieu', 'Cau_Di_Bo', 'Nha_Co_Binh_Thuy', 'Cho_Noi_Cai_Rang', 'Den_Vua_Hung']
     # qr_codes = {loc: generate_qr(loc) for loc in locations}
     
-    return render_template('dashboard.html', user=user, locations=locations, qr_codes=qr_codes)
+    return render_template('dashboard.html', user=user)
 
 @app.route('/checkin/<location_id>')
 def checkin(location_id):
