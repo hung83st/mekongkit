@@ -32,26 +32,26 @@ with app.app_context():
     db.create_all()
 
 --- Hàm tạo QR code ---
-def generate_qr(location_id):
-    # Chuyển location_id về dạng URL-friendly
-    url_map = {
-        "Ben_Ninh_Kieu": "ben-ninh-kieu",
-        "Cau_Di_Bo": "cau-di-bo",
-        "Nha_Co_Binh_Thuy": "nha-co-binh-thuy",
-        "Cho_Noi_Cai_Rang": "cho-noi-cai-rang",
-        "Den_Vua_Hung": "den-vua-hung"
-    }
-    # URL đầy đủ cho check-in
-    url = f"http://172.16.3.40:5000/{url_map.get(location_id, 'ben-ninh-kieu')}"
-    qr = qrcode.QRCode(box_size=5, border=2)
-    qr.add_data(url)
-    qr.make(fit=True)
-    img = qr.make_image(fill_color="black", back_color="white")
-    buf = BytesIO()
-    img.save(buf)
-    buf.seek(0)
-    img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
-    return f"data:image/png;base64,{img_base64}"
+# def generate_qr(location_id):
+#     # Chuyển location_id về dạng URL-friendly
+#     url_map = {
+#         "Ben_Ninh_Kieu": "ben-ninh-kieu",
+#         "Cau_Di_Bo": "cau-di-bo",
+#         "Nha_Co_Binh_Thuy": "nha-co-binh-thuy",
+#         "Cho_Noi_Cai_Rang": "cho-noi-cai-rang",
+#         "Den_Vua_Hung": "den-vua-hung"
+#     }
+#     # URL đầy đủ cho check-in
+#     url = f"http://172.16.3.40:5000/{url_map.get(location_id, 'ben-ninh-kieu')}"
+#     qr = qrcode.QRCode(box_size=5, border=2)
+#     qr.add_data(url)
+#     qr.make(fit=True)
+#     img = qr.make_image(fill_color="black", back_color="white")
+#     buf = BytesIO()
+#     img.save(buf)
+#     buf.seek(0)
+#     img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+#     return f"data:image/png;base64,{img_base64}"
 
 # --- Routes ---
 @app.route('/')
@@ -99,8 +99,8 @@ def dashboard():
     user = User.query.get(session['user_id'])
     
     # Sinh QR code cho các địa điểm check-in (Kinh)
-    locations = ['Ben_Ninh_Kieu', 'Cau_Di_Bo', 'Nha_Co_Binh_Thuy', 'Cho_Noi_Cai_Rang', 'Den_Vua_Hung']
-    qr_codes = {loc: generate_qr(loc) for loc in locations}
+    # locations = ['Ben_Ninh_Kieu', 'Cau_Di_Bo', 'Nha_Co_Binh_Thuy', 'Cho_Noi_Cai_Rang', 'Den_Vua_Hung']
+    # qr_codes = {loc: generate_qr(loc) for loc in locations}
     
     return render_template('dashboard.html', user=user, locations=locations, qr_codes=qr_codes)
 
