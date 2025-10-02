@@ -8,13 +8,13 @@
 
 <h3>Check-in các địa điểm (Kinh):</h3>
 <ul>
-    {% for loc in locations %}
+    <!-- {% for loc in locations %}
     <li>
         {{ loc }}<br>
         <img src="{{ qr_codes[loc] }}" alt="QR code {{ loc }}"><br>
         <a href="{{ url_for('checkin', location_id=loc) }}">Check-in</a>
     </li>
-    {% endfor %}
+    {% endfor %} -->
     <li><a href="{{ url_for('ben_ninh_kieu') }}">Bến Ninh Kiều</a></li>
     <li><a href="{{ url_for('cau_di_bo') }}">Cầu đi bộ</a></li>
     <li><a href="{{ url_for('nha_co_binh_thuy') }}">Nhà cổ Bình Thủy</a></li>
