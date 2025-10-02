@@ -31,7 +31,7 @@ class CheckIn(db.Model):
 with app.app_context():
     db.create_all()
 
---- Hàm tạo QR code ---
+#--- Hàm tạo QR code ---
 # def generate_qr(location_id):
 #     # Chuyển location_id về dạng URL-friendly
 #     url_map = {
