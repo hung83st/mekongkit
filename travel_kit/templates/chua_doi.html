@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chùa Dơi - Sóc Trăng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:'Be Vietnam Pro',sans-serif;
+            margin:0;
+            padding:0;
+            line-height:1.6;
+            background:#fdfdfd;
+            color:#333;
+        }
+        header {
+            background:linear-gradient(135deg,#43a047,#81c784);
+            color:white;
+            text-align:center;
+            padding:60px 20px;
+            position:relative; /* cho phép đặt nút ở góc */
+        }
+        header h1 {
+            font-size:40px;
+            margin-bottom:10px;
+        }
+        .container {
+            max-width:900px;
+            margin:auto;
+            padding:40px 20px;
+        }
+        .highlight {
+            background:#e8f5e9;
+            padding:20px;
+            border-left:6px solid #43a047;
+            border-radius:8px;
+            margin:20px 0;
+        }
+        img {
+            width:100%;
+            border-radius:12px;
+            margin:20px 0;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+        footer {
+            background:#43a047;
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:40px;
+        }
+        .btn {
+            display:inline-block;
+            padding:12px 25px;
+            margin-top:20px;
+            background:#43a047;
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:6px;
+            transition:0.3s;
+        }
+        .btn:hover {
+            background:#2e7d32;
+        }
+
+        /* --- Nút quay lại Dashboard --- */
+        .back-btn {
+            position:absolute;
+            top:20px;
+            left:20px;
+            background:white;
+            color:#43a047;
+            padding:10px 18px;
+            border-radius:6px;
+            text-decoration:none;
+            font-weight:bold;
+            box-shadow:0 2px 8px rgba(0,0,0,0.15);
+            transition:all 0.3s ease;
+        }
+        .back-btn:hover {
+            background:#43a047;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/dashboard" class="back-btn">⬅️ Quay lại Dashboard</a>
+        <h1>🦇 Chùa Dơi</h1>
+        <p>Ngôi chùa Khmer linh thiêng với hàng ngàn con dơi trú ngụ</p>
+    </header>
+
+    <div class="container">
+        <p><strong>Chùa Dơi</strong> (Wat Mahatup) là một trong những ngôi chùa Khmer nổi tiếng nhất miền Tây Nam Bộ, 
+        nằm tại Sóc Trăng, cách Cần Thơ khoảng 60km. Nơi đây nổi tiếng với hàng ngàn con dơi treo lủng lẳng trên những tán cây cổ thụ quanh chùa.</p>
+
+        <img src="{{ url_for('static', filename='images/chua-doi.jpg') }}" alt="Chùa Dơi">
+
+        <div class="highlight">
+            <h2>✨ Điểm nổi bật</h2>
+            <ul>
+                <li>✔️ Cảnh quan thanh tịnh hòa quyện cùng thiên nhiên</li>
+                <li>✔️ Nơi trú ngụ tự nhiên của hàng nghìn con dơi khổng lồ</li>
+                <li>✔️ Công trình kiến trúc Phật giáo Nam tông Khmer độc đáo</li>
+            </ul>
+        </div>
+
+        <p>Không chỉ là điểm tham quan đặc sắc, Chùa Dơi còn là nơi gìn giữ văn hóa, tín ngưỡng và đời sống tinh thần của người Khmer Nam Bộ.</p>
+
+        <a href="https://www.google.com/maps/place/Ch%C3%B9a+D%C6%A1i/@9.5790712,105.9693232,17.02z/data=!4m6!3m5!1s0x31a04d864a63a18d:0xe524b0c8be590a88!8m2!3d9.5790632!4d105.9718466!16s%2Fg%2F122r7fw4?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+    </div>
+
+    <footer>
+        © 2025 Du lịch Cần Thơ - Chùa Dơi
+    </footer>
+</body>
+</html>

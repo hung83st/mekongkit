@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chùa Pothisomron - Cần Thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:'Be Vietnam Pro',sans-serif;
+            margin:0;
+            padding:0;
+            line-height:1.6;
+            background:#fdfdfd;
+            color:#333;
+        }
+
+        header {
+            position: relative;
+            background:linear-gradient(135deg,#8e24aa,#ba68c8);
+            color:white;
+            text-align:center;
+            padding:60px 20px;
+        }
+
+        header h1 {
+            font-size:40px;
+            margin-bottom:10px;
+        }
+
+        /* Nút quay lại Dashboard */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #8e24aa;
+            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .container {
+            max-width:900px;
+            margin:auto;
+            padding:40px 20px;
+        }
+
+        .highlight {
+            background:#f3e5f5;
+            padding:20px;
+            border-left:6px solid #8e24aa;
+            border-radius:8px;
+            margin:20px 0;
+        }
+
+        img {
+            width:100%;
+            border-radius:12px;
+            margin:20px 0;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background:#8e24aa;
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:40px;
+        }
+
+        .btn {
+            display:inline-block;
+            padding:12px 25px;
+            margin-top:20px;
+            background:#8e24aa;
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:6px;
+            transition:0.3s;
+        }
+
+        .btn:hover {
+            background:#6a1b9a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+        <h1>🛕 Chùa Pothisomron</h1>
+        <p>Ngôi chùa Khmer cổ kính hơn 200 năm tuổi ở Cần Thơ</p>
+    </header>
+
+    <div class="container">
+        <p><strong>Chùa Pothisomron</strong> được xây dựng từ thế kỷ XVIII, là một trong những ngôi chùa Khmer cổ nhất tại khu vực đồng bằng sông Cửu Long. 
+        Chùa nổi bật với kiến trúc tinh xảo, mái ngói cong nhiều tầng và những bức phù điêu kể chuyện Phật giáo Nam tông Khmer.</p>
+
+        <img src="{{ url_for('static', filename='images/chua-pothisomron.jpg') }}" alt="Chùa Pothisomron">
+
+        <div class="highlight">
+            <h2>✨ Điểm nổi bật</h2>
+            <ul>
+                <li>✔️ Kiến trúc Khmer truyền thống với sắc vàng chủ đạo</li>
+                <li>✔️ Bảo tồn nhiều pho tượng Phật cổ quý hiếm</li>
+                <li>✔️ Không gian yên bình, thích hợp cho du khách tham quan tâm linh</li>
+            </ul>
+        </div>
+
+        <p>Chùa Pothisomron không chỉ là nơi sinh hoạt tôn giáo mà còn là minh chứng cho sự gắn bó lâu đời của người Khmer tại vùng đất Tây Đô.</p>
+
+        <a href="https://www.google.com/maps/place/Ch%C3%B9a+Pothisomron/@10.1102046,105.6142849,17z/data=!3m1!4b1!4m6!3m5!1s0x31a084c5ad3c8971:0x6a0d1de8c5560800!8m2!3d10.1102046!4d105.6168598!16s%2Fg%2F1hc5vc000?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+    </div>
+
+    <footer>
+        © 2025 Du lịch Cần Thơ - Chùa Pothisomron
+    </footer>
+</body>
+</html>
