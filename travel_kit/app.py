@@ -149,6 +149,48 @@ def cho_noi_cai_rang():
 def den_vua_hung():
     return render_template('den_vua_hung.html')
 
+# --- Địa điểm của dân tộc Khmer ---
+@app.route('/chua-pothisomron')
+def chua_pothisomron():
+    return render_template('chua_pothisomron.html')
+
+@app.route("/chua_muniransay")
+def chua_muniransay():
+    return render_template("chua_muniransay.html")
+
+@app.route("/chua_doi")
+def chua_doi():
+    return render_template("chua_doi.html")
+
+@app.route("/chua_som_rong")
+def chua_som_rong():
+    return render_template("chua_som_rong.html")
+
+@app.route("/chua_chen_kieu")
+def chua_chen_kieu():
+    return render_template("chua_chen_kieu.html")
+
+# Địa điểm của dân tộc Hoa
+
+@app.route("/chua_ong")
+def chua_ong():
+    return render_template("chua_ong.html")
+
+@app.route("/hiep_thien_cung")
+def hiep_thien_cung():
+    return render_template("hiep_thien_cung.html")
+
+@app.route("/tiem_che_huu_hoa")
+def tiem_che_huu_hoa():
+    return render_template("tiem_che_huu_hoa.html")
+
+@app.route("/chua_ba_thien_hau")
+def chua_ba_thien_hau():
+    return render_template("chua_ba_thien_hau.html")
+
+@app.route("/quan_thanh_de_co_mieu_quang_dong")
+def quan_thanh_de_co_mieu_quang_dong():
+    return render_template("quan_thanh_de_co_mieu_quang_dong.html")
 
 # --- Chạy app ---
 if __name__ == '__main__':
