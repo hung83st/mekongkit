@@ -150,9 +150,9 @@ def den_vua_hung():
     return render_template('den_vua_hung.html')
 
 # Địa điểm của dân tộc Hoa
-@app.route("/chua_ba_thien_hau")
-def chua_ba_thien_hau():
-    return render_template("chua_ba_thien_hau.html")
+# @app.route("/chua_ba_thien_hau")
+# def chua_ba_thien_hau():
+#     return render_template("chua_ba_thien_hau.html")
 
 # --- Chạy app ---
 if __name__ == '__main__':
