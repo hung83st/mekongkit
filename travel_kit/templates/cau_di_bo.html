@@ -5,20 +5,95 @@
     <title>Cầu đi bộ - Cần Thơ</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {font-family: 'Be Vietnam Pro', sans-serif; margin: 0; padding: 0; background: #fdfdfd; color: #333;}
-        header {background: linear-gradient(135deg, #8e24aa, #ab47bc); color: white; text-align: center; padding: 60px 20px;}
-        header h1 {font-size: 40px; margin-bottom: 10px;}
-        header p {font-size: 18px; opacity: 0.9;}
-        .container {max-width: 900px; margin: auto; padding: 40px 20px;}
-        .highlight {background: #f3e5f5; padding: 20px; border-left: 6px solid #8e24aa; border-radius: 8px; margin: 20px 0;}
-        img {width: 100%; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
-        footer {background: #8e24aa; color: white; text-align: center; padding: 15px; margin-top: 40px;}
-        .btn {display: inline-block; padding: 12px 25px; margin-top: 20px; background: #8e24aa; color: white; text-decoration: none; font-weight: bold; border-radius: 6px; transition: 0.3s;}
-        .btn:hover {background: #6a1b9a;}
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fdfdfd;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #8e24aa, #ab47bc);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative; /* để gắn nút quay lại */
+        }
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* 🔙 Nút quay lại Dashboard */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            background: #6a1b9a;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover {
+            background: #4a148c;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .highlight {
+            background: #f3e5f5;
+            padding: 20px;
+            border-left: 6px solid #8e24aa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        footer {
+            background: #8e24aa;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background: #8e24aa;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #6a1b9a;
+        }
     </style>
 </head>
 <body>
     <header>
+        <!-- 🔙 Nút quay lại -->
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+        
         <h1>🌉 Cầu đi bộ Cần Thơ</h1>
         <p>Nét đẹp lung linh bên bến Ninh Kiều</p>
     </header>
@@ -41,7 +116,7 @@
             </ul>
         </div>
 
-        <a href="https://goo.gl/maps/zY8fdyqV6vT2" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+        <a href="https://www.google.com/maps/place/C%E1%BA%A7u+%C4%91i+b%E1%BB%99+Ninh+Ki%E1%BB%81u/@10.0370957,105.786405,17z/data=!3m1!4b1!4m6!3m5!1s0x31a06300230b4cd3:0x509ca5c25ce87a15!8m2!3d10.0370957!4d105.7912759!16s%2Fg%2F11w4r8j02w?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>
