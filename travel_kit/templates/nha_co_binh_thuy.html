@@ -15,10 +15,31 @@
         footer {background: #6d4c41; color: white; text-align: center; padding: 15px; margin-top: 40px;}
         .btn {display: inline-block; padding: 12px 25px; margin-top: 20px; background: #6d4c41; color: white; text-decoration: none; font-weight: bold; border-radius: 6px; transition: 0.3s;}
         .btn:hover {background: #4e342e;}
+
+        /* Nút quay lại */
+        .back-btn {
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #6d4c41;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #4e342e;
+        }
     </style>
 </head>
 <body>
     <header>
+        <!-- Nút quay lại Dashboard -->
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+
         <h1>🏛️ Nhà cổ Bình Thủy</h1>
         <p>Kiến trúc cổ kính lưu giữ hồn xưa Nam Bộ</p>
     </header>
@@ -40,7 +61,7 @@
             </ul>
         </div>
 
-        <a href="https://goo.gl/maps/ZwaXUyMS3dE2" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+        <a href="https://www.google.com/maps/place/Nh%C3%A0+c%E1%BB%95+B%C3%ACnh+Th%E1%BB%A7y/@10.0670154,105.7470131,17z/data=!3m1!4b1!4m6!3m5!1s0x31a087681a8673ad:0x42943204998f75ed!8m2!3d10.0670154!4d105.749588!16s%2Fg%2F11spk6dhlz?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>
