@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quiz-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #ffffffb0;
+    backdrop-filter: blur(6px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .quiz-container:hover {
+    transform: scale(1.01);
+  }
+
+  .quiz-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    background: #fffdf9;
+    border: 1px solid #f1e3c3;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 18px;
+    transition: all 0.25s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+
+  .form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fefaf1;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background 0.2s ease-in-out;
+  }
+
+  .form-check:hover {
+    background: #fff3d4;
+  }
+
+  .form-check-label {
+    font-size: 16px;
+    flex-grow: 1;
+  }
+
+  .form-check-input {
+    transform: scale(1.3);
+    accent-color: #ff9800;
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: linear-gradient(45deg, #ff9800, #ffb300);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 12px 0;
+    box-shadow: 0 4px 10px rgba(255,152,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(255,152,0,0.5);
+  }
+</style>
+
+<div class="quiz-container">
+  <h2 class="quiz-title">🧠 Mini-Game: Thử tài hiểu biết văn hoá Việt!</h2>
+  <form method="POST" action="{{ url_for('minigame') }}">
+      <input type="hidden" name="questions_json" value='{{ questions|tojson|safe }}'>
+      {% for q in questions %}
+      {% set q_index = loop.index0 %}
+      <div class="card">
+        <h5 class="mb-3">{{ loop.index }}. {{ q.question }}</h5>
+        {% for option in q.options %}
+        <div class="form-check">
+          <label class="form-check-label">{{ option }}</label>
+          <input class="form-check-input" type="radio" name="question_{{ q_index }}" value="{{ option }}" required>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary mt-3">Nộp bài ✨</button>
+  </form>
+</div>
+{% endblock %}

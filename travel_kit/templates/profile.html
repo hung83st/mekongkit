@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Thông tin người dùng{% endblock %}
+{% block content %}
+
+<!-- 🔙 Nút quay lại Dashboard -->
+<div class="back-btn-container">
+    <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+</div>
+
+<div class="profile-container">
+    <h2>👤 Thông tin tài khoản</h2>
+    <div class="profile-card">
+        <p><strong>Tên đăng nhập:</strong> {{ user.username }}</p>
+        <p><strong>Điểm hiện tại:</strong> {{ user.points }}</p>
+        <p><strong>Ngày tham gia:</strong> {{ user.created_at.strftime('%d/%m/%Y') }}</p>
+        
+        {% if user.badge %}
+        <div class="badge-display">
+            <p><strong>🎖️ Huy hiệu hiện tại:</strong></p>
+            <div class="badge-box">
+                {{ user.badge }}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<style>
+
+/* --- Nút quay lại Dashboard --- */
+.back-btn-container {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.back-btn:hover {
+    background-color: #217dbb;
+}
+.profile-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.profile-card {
+    display: inline-block;
+    background: #fff8e1;
+    padding: 25px 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #333;
+}
+
+.badge-display {
+    margin-top: 15px;
+}
+
+.badge-box {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ffe082, #ffd54f);
+    border-radius: 30px;
+    font-weight: bold;
+    color: #4e342e;
+    box-shadow: 0 0 10px rgba(255, 214, 100, 0.7);
+    animation: glowBadge 3s infinite ease-in-out;
+}
+
+@keyframes glowBadge {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 214, 100, 0.7); }
+    50% { box-shadow: 0 0 20px rgba(255, 255, 150, 1); }
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .result-card {
+    max-width: 600px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: bounceIn 1s ease;
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #ff7043;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .btn {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-success {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    border: none;
+    color: #fff;
+  }
+
+  .btn-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(76,175,80,0.4);
+  }
+
+  .btn-secondary {
+    background: #607d8b;
+    border: none;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #78909c;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff9800;
+    animation: fall 3s infinite ease-in-out;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+  }
+</style>
+
+<div class="result-card position-relative">
+  <h2>🎉 Kết quả Mini-Game</h2>
+  <p>Bạn trả lời đúng <strong>{{ score // 10 }}</strong>/{{ total // 10 }} câu!</p>
+  <p>Điểm thưởng nhận được: <strong>{{ score }}</strong> điểm</p>
+  <p>Tổng điểm hiện tại của bạn: <strong>{{ user_points }}</strong></p>
+
+  {% if badge %}
+  <div class="badge-box mt-4">
+    <h4>🏅 Huy hiệu của bạn:</h4>
+    <p style="font-size: 20px; font-weight: bold; color: #ff9800;">{{ badge }}</p>
+  </div>
+  {% endif %}
+
+  <div class="mt-4">
+    <a href="{{ url_for('minigame') }}" class="btn btn-success me-2">Chơi lại 🔁</a>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Quay lại Dashboard</a>
+  </div>
+</div>
+
+<script>
+  // 🎊 Hiệu ứng confetti ngẫu nhiên
+  for (let i = 0; i < 40; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 60%)`;
+    confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+    confetti.style.animationDelay = Math.random() + 's';
+    document.body.appendChild(confetti);
+  }
+</script>
+{% endblock %}
