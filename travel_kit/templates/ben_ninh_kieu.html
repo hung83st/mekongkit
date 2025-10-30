@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Bến Ninh Kiều - Cần Thơ</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script> <!-- Thư viện 360° -->
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
@@ -19,6 +20,7 @@
             color: white;
             text-align: center;
             padding: 60px 20px;
+            position: relative; /* cần để định vị nút quay lại */
         }
         header h1 {
             font-size: 40px;
@@ -28,6 +30,27 @@
             font-size: 18px;
             opacity: 0.9;
         }
+
+        /* 🔙 Nút quay lại Dashboard */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            background: #1565c0;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+        }
+
         .container {
             max-width: 900px;
             margin: auto;
@@ -67,14 +90,31 @@
         .btn:hover {
             background: #1565c0;
         }
+
+        /* Phần camera 360° */
+        .viewer-360 {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .viewer-360:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
     <header>
+        <!-- 🔙 Nút quay lại -->
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+        
         <h1>🌊 Bến Ninh Kiều</h1>
         <p>Biểu tượng du lịch của thành phố Cần Thơ</p>
     </header>
-
+    
     <div class="container">
         <p>
             <strong>Bến Ninh Kiều</strong> nằm bên dòng sông Hậu hiền hòa, từ lâu đã trở thành một trong những điểm du lịch nổi tiếng
@@ -99,7 +139,8 @@
             ngắm nhìn cảnh hoàng hôn rực rỡ trên sông Hậu và tận hưởng ẩm thực đặc sắc ngay trên du thuyền.
         </p>
 
-        <a href="https://goo.gl/maps/f6RzzFhKuYrkZGdE9" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+        <a href="https://www.google.com/maps/place/B%E1%BA%BFn+Ninh+Ki%E1%BB%81u/@10.0322715,105.7856559,17z/data=!3m1!4b1!4m6!3m5!1s0x31a06298aae43e71:0xc6a64bdac582285d!8m2!3d10.0322715!4d105.7882308!16s%2Fg%2F11_ygvs77?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" 
+           target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>
