@@ -1,27 +1,161 @@
 {% extends "base.html" %}
-
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h2>Dashboard của bạn</h2>
-<p>Điểm hiện tại: {{ user.points }}</p>
+<style>
+  body {
+    background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+    animation: fadeIn 0.8s ease-in-out;
+  }
 
-<h3>Check-in các địa điểm (Kinh):</h3>
-<ul>
-    <!-- {% for loc in locations %}
-    <li>
-        {{ loc }}<br>
-        <img src="{{ qr_codes[loc] }}" alt="QR code {{ loc }}"><br>
-        <a href="{{ url_for('checkin', location_id=loc) }}">Check-in</a>
-    </li>
-    {% endfor %} -->
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dashboard-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffffb0;
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    animation: slideUp 0.8s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: center;
+    font-size: 18px;
+    color: #444;
+    background: #ffefc6;
+    padding: 10px 15px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.25);
+  }
+
+  h3 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #2f4858;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  ul li {
+    background: #fffaf1;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.25s ease;
+  }
+
+  ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.3);
+  }
+
+  ul li a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  ul li a:hover {
+    color: #ff9800;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffb347, transparent);
+    margin: 25px 0;
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .minigame-link {
+    display: inline-block;
+    margin-top: 25px;
+    text-decoration: none;
+    background: linear-gradient(45deg, #ff9800, #ffb300);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 12px 25px;
+    box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+    transition: all 0.3s ease;
+  }
+
+  .minigame-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(255,152,0,0.6);
+  }
+
+  @media (max-width: 600px) {
+    .dashboard-container {
+      padding: 25px;
+    }
+    h2 {
+      font-size: 26px;
+    }
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="dashboard-container">
+  <h2>🏝️ Dashboard của bạn</h2>
+  <p>Điểm hiện tại: <strong>{{ user.points }}</strong></p>
+
+  <div class="section-divider"></div>
+
+  <h3>🏞️ Check-in các địa điểm (Kinh):</h3>
+  <ul>
     <li><a href="{{ url_for('ben_ninh_kieu') }}">Bến Ninh Kiều</a></li>
     <li><a href="{{ url_for('cau_di_bo') }}">Cầu đi bộ</a></li>
     <li><a href="{{ url_for('nha_co_binh_thuy') }}">Nhà cổ Bình Thủy</a></li>
     <li><a href="{{ url_for('cho_noi_cai_rang') }}">Chợ nổi Cái Răng</a></li>
     <li><a href="{{ url_for('den_vua_hung') }}">Đền Vua Hùng</a></li>
-</ul>
+  </ul>
+<div class="section-divider"></div>
 
+  <h3>🏮 Check-in các địa điểm (Hoa):</h3>
+  <ul>
+    <!-- <li><a href="{{ url_for('chua_ong') }}">Chùa Ông</a></li>
+    <li><a href="{{ url_for('hiep_thien_cung') }}">Hiệp Thiên Cung</a></li>
+    <li><a href="{{ url_for('tiem_che_huu_hoa') }}">Tiệm chè Hữu Hòa</a></li> -->
+    <li><a href="{{ url_for('chua_ba_thien_hau') }}">Chùa Bà Thiên Hậu</a></li>
+    <!-- <li><a href="{{ url_for('quan_thanh_de_co_mieu_quang_dong') }}">Quan Thánh Đế Cổ Miếu Quảng Đông</a></li> -->
+  </ul>
 <h3>Mini-game:</h3>
 <a href="{{ url_for('minigame') }}">Chơi mini-game nhận điểm thưởng!</a>
 {% endblock %}
