@@ -149,6 +149,11 @@ def cho_noi_cai_rang():
 def den_vua_hung():
     return render_template('den_vua_hung.html')
 
+# Địa điểm của dân tộc Hoa
+@app.route("/chua_ba_thien_hau")
+def chua_ba_thien_hau():
+    return render_template("chua_ba_thien_hau.html")
+
 # --- Chạy app ---
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
