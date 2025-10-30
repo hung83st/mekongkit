@@ -5,10 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Travel Kit{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* ====== Header và logo ====== */
+        header {
+            position: relative;
+            text-align: center;
+            background-color: #f87171;
+            color: white;
+            padding: 20px 0 10px 0;
+        }
+
+        .header-top {
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .user-info {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 14px;
+            border-radius: 20px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .user-info:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            animation: logo-glow 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        @keyframes logo-glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 255, 200, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(255, 220, 120, 0.9);
+            }
+        }
+
+        h1 {
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff2cc, #ffe59e, #fff2cc);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: title-shine 6s ease-in-out infinite;
+        }
+
+        @keyframes title-shine {
+            0% { background-position: 0% 50%; opacity: 0.9; }
+            50% { background-position: 100% 50%; opacity: 1; }
+            100% { background-position: 0% 50%; opacity: 0.9; }
+        }
+
+        nav {
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+            font-size: 0.9em;
+        }
+
+        .flash-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .alert {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 8px;
+        }
+
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .alert-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .user-link {
+            color: #fff8dc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .user-link:hover {
+            color: #ffeb99;
+            transform: scale(1.05);
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <h1>Smart Travel Kit - Khám phá văn hóa Cần Thơ</h1>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logoMekongKit.jpg') }}" alt="Smart Travel Kit Logo" class="logo">
+                <h1>Smart Travel Kit - Khám phá văn hóa Cần Thơ</h1>
+            </div>
+    
+            {% if session.get('user_id') %}
+            <div class="user-info">
+                <a href="{{ url_for('profile') }}" class="user-link">
+                    👤 {% if current_user %}{{ current_user.username }}{% else %}Người dùng{% endif %}
+                </a>                
+            </div>
+            {% endif %}
+        </div>
+    
         {% if session.get('user_id') %}
         <nav>
             <a href="{{ url_for('dashboard') }}">🏠 Dashboard</a> |
@@ -17,11 +165,26 @@
         {% else %}
         <nav>
             <a href="{{ url_for('login') }}">🔑 Đăng nhập</a> |
-            <a href="{{ url_for('register') }}">📝 Đăng ký</a>
+            <a href="{{ url_for('register') }}">📝 Đăng ký</a> |
+            <a href="{{ url_for('guide') }}">📘 Hướng dẫn sử dụng</a>
         </nav>
         {% endif %}
         <hr>
     </header>
+    
+
+    <!-- 🌟 Hiển thị thông báo flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
 
     <main>
         {% block content %}{% endblock %}
