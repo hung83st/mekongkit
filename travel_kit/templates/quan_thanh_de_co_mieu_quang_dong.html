@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan Thánh Đế Cổ Miếu Quảng Đông - Cần Thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {font-family: 'Be Vietnam Pro', sans-serif; background: #fdfdfd; margin: 0; padding: 0;}
+        header {background: linear-gradient(135deg, #9c27b0, #ba68c8); color: white; text-align: center; padding: 60px 20px;}
+        .container {max-width: 900px; margin: auto; padding: 40px 20px;}
+        .highlight {background: #f3e5f5; padding: 20px; border-left: 6px solid #8e24aa; border-radius: 8px; margin: 20px 0;}
+        img {width: 100%; border-radius: 12px; margin: 20px 0;}
+        footer {background: #9c27b0; color: white; text-align: center; padding: 15px;}
+        .btn {display: inline-block; padding: 12px 25px; background: #9c27b0; color: white; border-radius: 6px; text-decoration: none; font-weight: bold;}
+        .btn:hover {background: #7b1fa2;}
+
+        /* Nút quay lại Dashboard */
+        .back-btn {
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #8e24aa;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #6a1b9a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Nút quay lại Dashboard -->
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+        
+        <h1>🏯 Quan Thánh Đế Cổ Miếu Quảng Đông</h1>
+        <p>Ngôi miếu uy nghi thờ Quan Vũ – vị thần chính nghĩa</p>
+    </header>
+
+    <div class="container">
+        <p>
+            <strong>Quan Thánh Đế Cổ Miếu Quảng Đông</strong> là nơi thờ Quan Vũ, vị thần biểu trưng cho lòng trung nghĩa và chính trực,
+            được cộng đồng người Hoa Quảng Đông tại Cần Thơ xây dựng cách đây hơn một thế kỷ.
+        </p>
+
+        <img src="{{ url_for('static', filename='images/quan-thanh-de-co-mieu-quang-dong.jpg') }}" alt="Quan Thánh Đế Cổ Miếu Quảng Đông">
+
+        <div class="highlight">
+            <h2>💎 Điểm nổi bật</h2>
+            <ul>
+                <li>✔️ Thờ Quan Thánh Đế Quân – biểu tượng của trung nghĩa</li>
+                <li>✔️ Kiến trúc cổ mang đậm nét Hoa Nam</li>
+                <li>✔️ Là trung tâm sinh hoạt văn hóa tín ngưỡng người Hoa</li>
+            </ul>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Quan+Th%C3%A1nh+%C4%90%E1%BA%BF+C%E1%BB%95+Mi%E1%BA%BFu+Qu%E1%BA%A3ng+%C4%90%C3%B4ng+%E5%BB%A3%E8%82%87%E6%AD%A6%E5%B8%9D%E5%8F%A4%E5%BB%9F+(+Ch%C3%B9a+%C3%94ng+B%E1%BB%95n+%C3%94+M%C3%B4n+)/@10.116915,105.6188563,17z/data=!3m1!4b1!4m6!3m5!1s0x31a084ef4374894f:0xffac3cc513ba784a!8m2!3d10.116915!4d105.6237272!16s%2Fg%2F1pzq3vyd1?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+    </div>
+
+    <footer>© 2025 Du lịch Cần Thơ - Quan Thánh Đế Cổ Miếu Quảng Đông</footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chùa Ông - Cần Thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fdfdfd;
+            color: #333;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #d81b60, #f06292);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Nút quay lại dashboard */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #d81b60;
+            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #f8bbd0;
+            color: #880e4f;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .highlight {
+            background: #fce4ec;
+            padding: 20px;
+            border-left: 6px solid #ec407a;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #d81b60;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background: #d81b60;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #ad1457;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏮 Chùa Ông (Quảng Triệu Hội Quán)</h1>
+        <p>Ngôi chùa linh thiêng giữa lòng Cần Thơ</p>
+    </header>
+
+    <div class="container">
+        <p>
+            <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+            <strong>Chùa Ông</strong> nằm tại trung tâm quận Ninh Kiều, được xây dựng bởi cộng đồng người Hoa Quảng Đông.
+            Đây là một trong những công trình kiến trúc tiêu biểu thể hiện nét văn hóa và tín ngưỡng đặc sắc của người Hoa ở Cần Thơ.
+        </p>
+
+        <img src="{{ url_for('static', filename='images/chua-ong.jpg') }}" alt="Chùa Ông Cần Thơ">
+
+        <div class="highlight">
+            <h2>✨ Điểm nổi bật</h2>
+            <ul>
+                <li>✔️ Kiến trúc Trung Hoa cổ kính, chạm trổ tinh xảo</li>
+                <li>✔️ Thờ Quan Thánh Đế Quân – vị thần biểu trưng cho chính nghĩa</li>
+                <li>✔️ Không gian linh thiêng, mùi hương trầm đặc trưng</li>
+                <li>✔️ Được công nhận là di tích kiến trúc nghệ thuật cấp quốc gia</li>
+            </ul>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Ch%C3%B9a+%C3%94ng+C%E1%BA%A7n+Th%C6%A1+(+Qu%E1%BA%A3ng+Tri%E1%BB%87u+H%E1%BB%99i+Qu%C3%A1n+)/@10.0869067,105.6436419,11.25z/data=!4m10!1m2!2m1!1zQ2jDuWEgw7RuZw!3m6!1s0x31a0629e9e0072c5:0x45ff04519813c779!8m2!3d10.0341908!4d105.7884804!15sCgpDaMO5YSDDtG5nWgwiCmNow7lhIMO0bmeSARBwbGFjZV9vZl93b3JzaGlwqgEyEAEyHhABIho_tSnfyetC_ZvraABUQKTPmbjBmmUSl67ohDIOEAIiCmNow7lhIMO0bmfgAQA!16s%2Fg%2F1269n12wr?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+    </div>
+
+    <footer>© 2025 Du lịch Cần Thơ - Chùa Ông</footer>
+</body>
+</html>
