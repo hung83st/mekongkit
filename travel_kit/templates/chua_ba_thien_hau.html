@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chùa Bà Thiên Hậu - Cần Thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff3e0;
+        }
+        header {
+            background: linear-gradient(135deg, #ef6c00, #ff9800);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background: white;
+            color: #ef6c00;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 2px solid #ef6c00;
+        }
+        .back-btn:hover {
+            background: #ef6c00;
+            color: white;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .highlight {
+            background: #fff8e1;
+            padding: 20px;
+            border-left: 6px solid #f57c00;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        footer {
+            background: #ef6c00;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #ef6c00;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
+        
+        <h1>🕍 Chùa Bà Thiên Hậu</h1>
+        <p>Nơi tôn vinh vị nữ thần bảo hộ biển cả</p>
+    </header>
+
+    <div class="container">
+        <p>
+            <strong>Chùa Bà Thiên Hậu</strong> là điểm đến linh thiêng của cộng đồng người Hoa,
+            nơi thờ Thiên Hậu Thánh Mẫu – vị thần che chở người đi biển. 
+            Chùa mang kiến trúc đậm nét Hoa và thường tổ chức lễ hội lớn vào tháng 3 âm lịch.
+        </p>
+
+        <img src="{{ url_for('static', filename='images/chua-ba-thien-hau.jpg') }}" alt="Chùa Bà Thiên Hậu">
+
+        <div class="highlight">
+            <h2>🔥 Điểm nổi bật</h2>
+            <ul>
+                <li>✔️ Lễ hội Thiên Hậu Thánh Mẫu sôi động</li>
+                <li>✔️ Kiến trúc cổ kính và tượng thần tinh xảo</li>
+                <li>✔️ Không khí trang nghiêm và linh thiêng</li>
+            </ul>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Ch%C3%B9a+B%C3%A0+Thi%C3%AAn+H%E1%BA%ADu+-+C%C3%A1i+R%C4%83ng+%E5%A4%A9%E5%90%8E%E5%8F%A4%E5%BB%9F/@10.1622798,105.3579186,10.81z/data=!4m10!1m2!2m1!1zY2jDuWEgYsOgIHRoacOqbiBo4bqtdQ!3m6!1s0x31a089afe9ea6fdf:0x731ede08957fc2c8!8m2!3d10.0030306!4d105.745837!15sChZjaMO5YSBiw6AgdGhpw6puIGjhuq11kgEQcGxhY2Vfb2Zfd29yc2hpcKoBPhABMh4QASIaIAUIvOlqNBCL9lljCBFhOD4DNLV3ugLs8cEyGhACIhZjaMO5YSBiw6AgdGhpw6puIGjhuq114AEA!16s%2Fg%2F11cnb9vmyv?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+    </div>
+
+    <footer>© 2025 Du lịch Cần Thơ - Chùa Bà Thiên Hậu</footer>
+</body>
+</html>
