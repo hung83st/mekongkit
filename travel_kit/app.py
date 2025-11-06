@@ -251,6 +251,466 @@ def minigame():
             'question': 'Cầu đi bộ Cần Thơ nổi tiếng về điều gì?',
             'options': ['Hình dáng cánh sen và đèn LED đổi màu', 'Chiều dài kỷ lục Việt Nam', 'Được xây bằng gỗ quý', 'Nối liền hai tỉnh'],
             'answer': 'Hình dáng cánh sen và đèn LED đổi màu'
+        },
+
+        # --- 10 CÂU HỎI MỚI (Tập trung vào Hoa, Khmer, và Đa dạng VN) ---
+        {
+            'question': 'Điểm check-in nào sau đây là của dân tộc Hoa tại Cần Thơ?',
+            'options': ['Chùa Ông', 'Chùa Pothisomron', 'Đình Bình Thủy', 'Vườn Cò Bằng Lăng'],
+            'answer': 'Chùa Ông'
+        },
+        {
+            'question': 'Dân tộc Khmer ở ĐBSCL nổi tiếng với lễ hội tôn giáo nào có phần đua thuyền truyền thống?',
+            'options': ['Lễ hội Kate', 'Lễ hội Oóc Om Bóc', 'Lễ hội Cầu Ngư', 'Lễ hội Trùng Cửu'],
+            'answer': 'Lễ hội Oóc Om Bóc'
+        },
+        {
+            'question': 'Vũ điệu truyền thống nào là nét đặc trưng của dân tộc Chăm?',
+            'options': ['Múa Sạp', 'Múa Xoè', 'Múa Apsara', 'Múa Quạt'],
+            'answer': 'Múa Apsara'
+        },
+        {
+            'question': 'Linh vật Naga (Rắn thần) thường được chạm khắc ở lối vào các ngôi chùa là của dân tộc nào?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Dao', 'Dân tộc Khmer', 'Dân tộc Thái'],
+            'answer': 'Dân tộc Khmer'
+        },
+        {
+            'question': 'Trong kiến trúc của người Hoa, màu sắc nào tượng trưng cho may mắn, tài lộc và hạnh phúc?',
+            'options': ['Trắng', 'Đen', 'Đỏ', 'Xanh lam'],
+            'answer': 'Đỏ'
+        },
+        {
+            'question': 'Bộ trang phục truyền thống nào của dân tộc Kinh nổi tiếng với tà áo dài và nón lá?',
+            'options': ['Áo Yếm', 'Áo Bà Ba', 'Áo Tứ Thân', 'Áo Dài'],
+            'answer': 'Áo Dài'
+        },
+        {
+            'question': 'Loại hình nghệ thuật nào của dân tộc Kinh ở miền Tây thường được biểu diễn trên ghe, xuồng?',
+            'options': ['Hát Xoan', 'Hát Chèo', 'Đờn Ca Tài Tử', 'Quan Họ'],
+            'answer': 'Đờn Ca Tài Tử'
+        },
+        {
+            'question': 'Lễ hội cúng đình Thần Nguyễn Trung Trực (Rạch Giá) thể hiện nét văn hóa tâm linh của vùng nào?',
+            'options': ['Tây Bắc', 'Đông Bắc', 'Đồng bằng sông Cửu Long', 'Tây Nguyên'],
+            'answer': 'Đồng bằng sông Cửu Long'
+        },
+        {
+            'question': 'Trong văn hóa Hoa, linh vật Rồng thường tượng trưng cho điều gì?',
+            'options': ['Sự yên bình', 'Quyền lực và thịnh vượng', 'Sự nhẹ nhàng', 'Tính nữ'],
+            'answer': 'Quyền lực và thịnh vượng'
+        },
+        {
+            'question': 'Nhà sàn dài là kiến trúc nhà ở đặc trưng của dân tộc nào ở Tây Nguyên?',
+            'options': ['Dân tộc Tày', 'Dân tộc Ê Đê', 'Dân tộc Mường', 'Dân tộc Nùng'],
+            'answer': 'Dân tộc Ê Đê'
+        },
+
+        # --- 10 CÂU HỎI BỔ SUNG LẦN 2 (Mới thêm) ---
+        {
+            'question': 'Món ăn đặc sản nào của Cần Thơ có sự kết hợp hài hòa giữa vị béo, ngọt, mặn của thịt lợn và tôm?',
+            'options': ['Bánh Xèo', 'Bánh Tét Lá Cẩm', 'Hủ Tiếu Nam Vang', 'Bún Nước Lèo'],
+            'answer': 'Bánh Tét Lá Cẩm'
+        },
+        {
+            'question': 'Vào dịp Tết Nguyên Đán, người Hoa thường treo đèn lồng màu gì để cầu mong may mắn và tài lộc?',
+            'options': ['Xanh dương', 'Vàng', 'Trắng', 'Đỏ'],
+            'answer': 'Đỏ'
+        },
+        {
+            'question': 'Ngôi chùa Khmer nổi tiếng ở Cần Thơ, thường có tên gọi dựa trên loại cây mọc xung quanh là gì?',
+            'options': ['Chùa Munirajabombong', 'Chùa Pothisomron (Chùa Cây Mai)', 'Chùa Khmer An Thạnh', 'Chùa Bửu Sơn'],
+            'answer': 'Chùa Pothisomron (Chùa Cây Mai)'
+        },
+        {
+            'question': 'Đặc điểm kiến trúc nào của đình Bình Thủy (Cần Thơ) thể hiện sự giao thoa văn hóa Đông – Tây?',
+            'options': ['Mái lợp ngói âm dương', 'Cấu trúc nhà rường bằng gỗ', 'Mặt tiền mang kiến trúc Pháp', 'Tường xây bằng đá cuội'],
+            'answer': 'Mặt tiền mang kiến trúc Pháp'
+        },
+        {
+            'question': 'Dân tộc Khmer sử dụng nhạc cụ nào để tạo ra âm thanh chủ đạo trong các điệu múa truyền thống?',
+            'options': ['Đàn Tranh', 'Cồng Chiêng', 'Dàn nhạc Ngũ âm (Pin Peat)', 'Đàn Bầu'],
+            'answer': 'Dàn nhạc Ngũ âm (Pin Peat)'
+        },
+        {
+            'question': 'Phong tục nào của người Kinh ở ĐBSCL thể hiện lòng biết ơn tổ tiên và cầu mong mùa màng bội thu?',
+            'options': ['Lễ cúng ông Công ông Táo', 'Lễ hội Lồng Tồng', 'Lễ hội Nghinh Ông', 'Lễ Hạ Điền'],
+            'answer': 'Lễ Hạ Điền'
+        },
+        {
+            'question': 'Dân tộc nào ở Việt Nam có truyền thống thờ cúng Thiên Hậu Thánh Mẫu (Mazu)?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Hoa', 'Dân tộc Tày', 'Dân tộc Chăm'],
+            'answer': 'Dân tộc Hoa'
+        },
+        {
+            'question': 'Trong kiến trúc chùa Khmer, phần nào thường được trang trí bằng tượng chim thần Garuda và tiên nữ Apsara?',
+            'options': ['Cột trụ', 'Mái vòm', 'Tường bao', 'Cổng chính và tháp'],
+            'answer': 'Cổng chính và tháp'
+        },
+        {
+            'question': 'Trang phục truyền thống của người Kinh ở miền Tây thường là loại nào, phù hợp với công việc đồng áng, sông nước?',
+            'options': ['Áo dài', 'Áo the khăn xếp', 'Áo bà ba', 'Váy xòe'],
+            'answer': 'Áo bà ba'
+        },
+        {
+            'question': 'Biểu tượng "song hỷ" (囍) là nét văn hóa đặc trưng của dân tộc nào, thường dùng trong lễ cưới?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Hoa', 'Dân tộc Ê Đê', 'Dân tộc Mường'],
+            'answer': 'Dân tộc Hoa'
+        },
+
+        # --- 20 CÂU HỎI BỔ SUNG LẦN 3 (Mới thêm) ---
+        {
+            'question': 'Món "Bún Nước Lèo" là đặc sản của dân tộc nào tại ĐBSCL, thường có vị mắm đặc trưng?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Hoa', 'Dân tộc Khmer', 'Dân tộc Chăm'],
+            'answer': 'Dân tộc Khmer'
+        },
+        {
+            'question': 'Trong nghệ thuật múa Lân - Sư - Rồng của người Hoa, vai trò của Lân chủ yếu là gì?',
+            'options': ['Tượng trưng cho quyền lực', 'Tượng trưng cho sức mạnh', 'Mang lại may mắn, xua đuổi tà ma', 'Tượng trưng cho sự giàu có'],
+            'answer': 'Mang lại may mắn, xua đuổi tà ma'
+        },
+        {
+            'question': 'Làng nghề truyền thống nào ở Cần Thơ nổi tiếng với việc làm bánh hỏi, bún, và bánh tráng?',
+            'options': ['Làng nghề gốm', 'Làng nghề đan lát', 'Làng nghề bánh tráng Thuận Hưng', 'Làng nghề dệt thổ cẩm'],
+            'answer': 'Làng nghề bánh tráng Thuận Hưng'
+        },
+        {
+            'question': 'Vào dịp lễ Phục sinh, người Khmer có tục lệ gì liên quan đến việc xây cồn cát ở chùa?',
+            'options': ['Xây cồn cát để cầu mưa', 'Xây cồn cát để cúng thổ địa', 'Xây cồn cát để tạ lỗi với đất đai', 'Xây cồn cát để cầu phước lành, xua tan tai ương'],
+            'answer': 'Xây cồn cát để cầu phước lành, xua tan tai ương'
+        },
+        {
+            'question': 'Cổng chính của các ngôi chùa Khmer luôn quay về hướng nào?',
+            'options': ['Hướng Bắc', 'Hướng Tây', 'Hướng Đông', 'Hướng Nam'],
+            'answer': 'Hướng Đông'
+        },
+        {
+            'question': 'Phong tục "Hò Xử Lý" trên sông nước miền Tây của dân tộc Kinh là loại hình nghệ thuật nào?',
+            'options': ['Hát ru', 'Hát giao duyên', 'Hát đồng ca khi lao động', 'Hát tuồng'],
+            'answer': 'Hát đồng ca khi lao động'
+        },
+        {
+            'question': 'Món "Chè Trôi Nước" (thường có nhân đậu xanh) của người Hoa thường được ăn trong dịp nào?',
+            'options': ['Tết Đoan Ngọ', 'Tết Nguyên Tiêu', 'Tết Thanh Minh', 'Tất cả các dịp lễ lớn'],
+            'answer': 'Tết Nguyên Tiêu'
+        },
+        {
+            'question': 'Trong kiến trúc nhà cổ Bình Thủy, họa tiết nào thường được sử dụng để trang trí gờ mái và cột nhà?',
+            'options': ['Hoa sen và chim phượng', 'Rồng và cá chép', 'Cây nho và sóc', 'Tứ linh'],
+            'answer': 'Cây nho và sóc'
+        },
+        {
+            'question': 'Tác phẩm điêu khắc nào thường xuất hiện ở bậc thang lên xuống trong các chùa Khmer, tượng trưng cho sự chuyển tiếp từ trần tục lên cõi Phật?',
+            'options': ['Tượng Phật', 'Tượng Apsara', 'Tượng đầu Rồng 5 hoặc 7 đầu (Naga)', 'Tượng voi 3 đầu'],
+            'answer': 'Tượng đầu Rồng 5 hoặc 7 đầu (Naga)'
+        },
+        {
+            'question': 'Điệu lý nào nổi tiếng của dân tộc Kinh ở Nam Bộ, thường được dùng để đối đáp nam nữ trên sông nước?',
+            'options': ['Lý Chim Quyên', 'Lý Con Sáo', 'Lý Kéo Chài', 'Lý Tứ Đại'],
+            'answer': 'Lý Con Sáo'
+        },
+        {
+            'question': 'Loại hình kiến trúc nào của người Hoa tại Cần Thơ, thường có mái cong, trang trí rồng phụng, và thờ các vị thần Trung Quốc?',
+            'options': ['Nhà sàn', 'Đình làng', 'Hội quán', 'Chùa Tháp'],
+            'answer': 'Hội quán'
+        },
+        {
+            'question': 'Lễ hội nào của người Khmer được tổ chức vào khoảng tháng 4 dương lịch, đánh dấu năm mới theo lịch cổ truyền?',
+            'options': ['Tết Nguyên Đán', 'Lễ Chol Chnam Thmay', 'Lễ Vu Lan', 'Lễ Giáng Sinh'],
+            'answer': 'Lễ Chol Chnam Thmay'
+        },
+        {
+            'question': 'Đặc sản "Bánh Pía" (bánh bía) là món ăn mang đậm dấu ấn văn hóa của dân tộc nào ở miền Tây?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Chăm', 'Dân tộc Khmer', 'Dân tộc Hoa'],
+            'answer': 'Dân tộc Hoa'
+        },
+        {
+            'question': 'Kiểu nhà truyền thống nào của người Kinh ở Cần Thơ có kiến trúc ba gian hai chái, lợp ngói âm dương?',
+            'options': ['Nhà sàn', 'Nhà rường', 'Nhà ống', 'Nhà trệt'],
+            'answer': 'Nhà rường'
+        },
+        {
+            'question': 'Trong các nghi lễ của người Khmer, vai trò của "Achar" (ông sư cả) là gì?',
+            'options': ['Thợ xây chùa', 'Người quản lý tài chính', 'Người hướng dẫn nghi lễ, người truyền đạt giáo lý', 'Người trồng trọt'],
+            'answer': 'Người hướng dẫn nghi lễ, người truyền đạt giáo lý'
+        },
+        {
+            'question': 'Đặc điểm nào nổi bật trên các mái chùa của người Hoa, thể hiện quan niệm về phong thủy và tâm linh?',
+            'options': ['Sử dụng mái bằng', 'Trang trí nhiều tượng thú và hoa văn gốm sứ', 'Sử dụng mái tranh', 'Lợp ngói đỏ đơn giản'],
+            'answer': 'Trang trí nhiều tượng thú và hoa văn gốm sứ'
+        },
+        {
+            'question': 'Món "Lẩu Mắm" miền Tây là sự kết hợp tinh tế của các nguyên liệu chính, trong đó mắm được chế biến từ loại cá nào?',
+            'options': ['Cá rô đồng', 'Cá lóc', 'Cá sặc hoặc cá linh', 'Cá tra'],
+            'answer': 'Cá sặc hoặc cá linh'
+        },
+        {
+            'question': 'Lễ hội nào của người Kinh ở Cần Thơ thường diễn ra vào tháng Giêng âm lịch tại các đình làng để cầu an và mừng mùa màng?',
+            'options': ['Lễ Tế Công', 'Lễ Thượng Điền', 'Lễ Phục Sinh', 'Lễ Vu Lan'],
+            'answer': 'Lễ Thượng Điền'
+        },
+        {
+            'question': 'Tông màu chủ đạo và nổi bật nhất trong kiến trúc chùa Khmer ở ĐBSCL là gì?',
+            'options': ['Trắng và Xanh lam', 'Vàng và Đỏ/Nâu đất', 'Xanh lá và Trắng', 'Đen và Xám'],
+            'answer': 'Vàng và Đỏ/Nâu đất'
+        },
+        {
+            'question': 'Tại các chợ nổi miền Tây, vật dụng nào thường được treo trên cây sào cao (cây bẹo) để quảng cáo mặt hàng buôn bán?',
+            'options': ['Lá cờ', 'Biển hiệu viết tay', 'Chính sản phẩm đó', 'Một bức tượng nhỏ'],
+            'answer': 'Chính sản phẩm đó'
+        },
+
+        # --- 20 CÂU HỎI BỔ SUNG LẦN 4 (Mới thêm) ---
+        {
+            'question': 'Vị thần nào được thờ phụng tại Đình Bình Thủy (Cần Thơ) theo tín ngưỡng dân gian của người Kinh?',
+            'options': ['Thần Nông', 'Thành Hoàng Bổn Cảnh', 'Thổ Địa', 'Quan Công'],
+            'answer': 'Thành Hoàng Bổn Cảnh'
+        },
+        {
+            'question': 'Hội quán Quảng Triệu của người Hoa ở Cần Thơ chủ yếu thờ vị thần nào?',
+            'options': ['Quan Thánh Đế Quân', 'Bao Công', 'Thiên Hậu Thánh Mẫu', 'Huyền Thiên Thượng Đế'],
+            'answer': 'Quan Thánh Đế Quân'
+        },
+        {
+            'question': 'Dân tộc Khmer theo tôn giáo nào là chủ yếu, điều này chi phối kiến trúc và lễ hội của họ?',
+            'options': ['Ấn Độ Giáo (Hinduism)', 'Phật giáo Đại thừa', 'Phật giáo Nguyên thủy (Theravada)', 'Thiên Chúa Giáo'],
+            'answer': 'Phật giáo Nguyên thủy (Theravada)'
+        },
+        {
+            'question': 'Hình thức ca hát nào của người Kinh ở Nam Bộ được UNESCO công nhận là Di sản văn hóa phi vật thể của nhân loại?',
+            'options': ['Hát Chèo', 'Hát Xoan', 'Đờn Ca Tài Tử Nam Bộ', 'Ca Trù'],
+            'answer': 'Đờn Ca Tài Tử Nam Bộ'
+        },
+        {
+            'question': 'Trong đám cưới truyền thống của người Hoa, vật phẩm nào tượng trưng cho sự có đôi, có cặp, sum vầy?',
+            'options': ['Trái cây', 'Đèn lồng, nến đỏ có hình Long Phụng', 'Hoa tươi', 'Bánh kem'],
+            'answer': 'Đèn lồng, nến đỏ có hình Long Phụng'
+        },
+        {
+            'question': 'Trong Lễ Oóc Om Bóc của người Khmer, họ thường cúng vật phẩm gì để tạ ơn Thần Mặt Trăng (Neang Khliang) đã mang lại mùa màng?',
+            'options': ['Xôi đậu', 'Bánh Chưng', 'Cốm dẹp (Om Bok)', 'Trái cây nhiệt đới'],
+            'answer': 'Cốm dẹp (Om Bok)'
+        },
+        {
+            'question': 'Tác phẩm văn học dân gian nào của người Kinh ở Nam Bộ thường kể về quá trình khai phá đất đai, vật lộn với thiên nhiên?',
+            'options': ['Truyện Kiều', 'Ca dao, tục ngữ về tình yêu', 'Truyện thơ Nôm', 'Các bài Vè, Hò'],
+            'answer': 'Các bài Vè, Hò'
+        },
+        {
+            'question': 'Màu sắc nào thường được người Hoa sử dụng để mặc trong tang lễ, trái ngược với màu đỏ trong lễ hội?',
+            'options': ['Vàng', 'Đỏ', 'Trắng', 'Đen'],
+            'answer': 'Trắng'
+        },
+        {
+            'question': 'Đặc điểm độc đáo của nhà ở truyền thống của người Kinh ở ĐBSCL là gì, liên quan đến địa hình sông nước?',
+            'options': ['Nhà sàn cao chót vót', 'Nhà có xuồng (ghe) đậu dưới hiên nhà', 'Nhà xây bằng đá', 'Nhà có nhiều tầng'],
+            'answer': 'Nhà có xuồng (ghe) đậu dưới hiên nhà'
+        },
+        {
+            'question': 'Mặt nạ Khon (Hoon) được sử dụng trong loại hình nghệ thuật nào của Khmer, mô tả các nhân vật thần thoại?',
+            'options': ['Múa Apsara', 'Múa rối bóng', 'Múa mặt nạ Khon', 'Múa Sạp'],
+            'answer': 'Múa mặt nạ Khon'
+        },
+        {
+            'question': 'Cái tên "Cần Thơ" được cho là xuất phát từ tiếng Khmer có nghĩa là gì?',
+            'options': ['Thành phố mới', 'Sông nước lớn', 'Dòng sông thơ', 'Cá lóc đồng'],
+            'answer': 'Sông nước lớn'
+        },
+        {
+            'question': 'Ngôi chùa cổ nào của người Hoa ở Sóc Trăng nổi tiếng với kiến trúc có nhiều tượng Phật bằng đất sét nung?',
+            'options': ['Chùa Dơi', 'Chùa Đất Sét (Bửu Sơn Tự)', 'Chùa Ông', 'Chùa Khleang'],
+            'answer': 'Chùa Đất Sét (Bửu Sơn Tự)'
+        },
+        {
+            'question': 'Loại hình chợ nào đặc trưng nhất của người Kinh ở miền Tây, gắn liền với văn hóa giao thương trên sông?',
+            'options': ['Chợ phiên', 'Chợ nổi', 'Chợ đêm', 'Chợ tạm'],
+            'answer': 'Chợ nổi'
+        },
+        {
+            'question': 'Trước khi có chữ Quốc ngữ, người Khmer đã sử dụng loại chữ viết nào?',
+            'options': ['Chữ Hán', 'Chữ Phạn', 'Chữ Nôm', 'Chữ Khmer cổ'],
+            'answer': 'Chữ Khmer cổ'
+        },
+        {
+            'question': 'Họ tộc nào là một trong những họ tộc người Hoa lớn nhất ở Cần Thơ, có Hội quán riêng?',
+            'options': ['Họ Nguyễn', 'Họ Lê', 'Họ Quảng Triệu (Quảng Đông)', 'Họ Trần'],
+            'answer': 'Họ Quảng Triệu (Quảng Đông)'
+        },
+        {
+            'question': 'Nghệ thuật đan lát (rổ, rá, chiếu) bằng các loại cây như lát, lác là nghề truyền thống của dân tộc nào ở ĐBSCL?',
+            'options': ['Dân tộc Hoa', 'Dân tộc Kinh', 'Dân tộc Khmer', 'Dân tộc Chăm'],
+            'answer': 'Dân tộc Kinh'
+        },
+        {
+            'question': 'Cây cầu nào ở Cần Thơ được xem là biểu tượng kết nối hai bờ sông Hậu, hoàn thành vào năm 2010?',
+            'options': ['Cầu Rạch Miễu', 'Cầu Mỹ Thuận', 'Cầu Cần Thơ', 'Cầu Hàm Luông'],
+            'answer': 'Cầu Cần Thơ'
+        },
+        {
+            'question': 'Trong Lễ hội Oóc Om Bóc, cuộc đua ghe Ngo truyền thống được tổ chức trên địa hình nào?',
+            'options': ['Ao hồ', 'Sông, rạch', 'Đường bộ', 'Biển'],
+            'answer': 'Sông, rạch'
+        },
+        {
+            'question': 'Dân tộc nào có tục lệ "xin lửa" từ bếp nhà hàng xóm vào đêm Giao thừa để cầu may mắn, sung túc?',
+            'options': ['Dân tộc Khmer', 'Dân tộc Tày', 'Dân tộc Kinh', 'Dân tộc Hoa'],
+            'answer': 'Dân tộc Kinh'
+        },
+        {
+            'question': 'Phương tiện giao thông nào đã trở thành biểu tượng văn hóa du lịch đặc trưng của vùng sông nước ĐBSCL?',
+            'options': ['Xe đạp', 'Xe máy', 'Ghe, xuồng, tắc ráng', 'Ô tô khách'],
+            'answer': 'Ghe, xuồng, tắc ráng'
+        },
+
+        # --- 30 CÂU HỎI BỔ SUNG LẦN 5 (Mới thêm) ---
+        {
+            'question': 'Món bánh nào của người Khmer thường được làm từ gạo nếp và dừa, có hình dáng như một chiếc lá dừa cuộn?',
+            'options': ['Bánh bò', 'Bánh lá dừa', 'Bánh chuối', 'Bánh ống'],
+            'answer': 'Bánh ống'
+        },
+        {
+            'question': 'Tín ngưỡng thờ Bà Chúa Xứ gắn liền với ngọn núi nào ở An Giang, thu hút hàng triệu du khách mỗi năm?',
+            'options': ['Núi Cấm', 'Núi Sam', 'Núi Bà Đen', 'Núi Dinh'],
+            'answer': 'Núi Sam'
+        },
+        {
+            'question': 'Biểu tượng vật chất nào của Cần Thơ đã từng được in trên tờ tiền 5 đồng của Việt Nam Cộng Hòa?',
+            'options': ['Cầu Cần Thơ', 'Chợ nổi Cái Răng', 'Cầu Ninh Kiều', 'Tượng đài Hồ Chí Minh'],
+            'answer': 'Cầu Ninh Kiều'
+        },
+        {
+            'question': 'Hệ thống kênh rạch chằng chịt ở ĐBSCL có vai trò chủ yếu gì trong đời sống văn hóa của người dân Kinh?',
+            'options': ['Chỉ dùng để nuôi trồng thủy sản', 'Là đường giao thông, thương mại, và nguồn cảm hứng nghệ thuật', 'Chỉ dùng để thoát nước lũ', 'Chỉ dùng để cung cấp nước sạch'],
+            'answer': 'Là đường giao thông, thương mại, và nguồn cảm hứng nghệ thuật'
+        },
+        {
+            'question': 'Loại trái cây nào nổi tiếng nhất Cần Thơ, gắn liền với miệt vườn Phong Điền?',
+            'options': ['Sầu riêng', 'Vú sữa Lò Rèn', 'Dâu Hạ Châu', 'Thanh long'],
+            'answer': 'Dâu Hạ Châu'
+        },
+        {
+            'question': 'Trong kiến trúc Hội quán của người Hoa, "mái ngói âm dương" tượng trưng cho điều gì?',
+            'options': ['Sự giàu có', 'Sự vĩnh cửu', 'Sự hài hòa âm dương', 'Sự mạnh mẽ'],
+            'answer': 'Sự hài hòa âm dương'
+        },
+        {
+            'question': 'Trang phục truyền thống của các nhà sư Khmer có màu sắc chủ đạo là gì?',
+            'options': ['Trắng', 'Đỏ', 'Vàng (hoặc cam đất)', 'Xanh lam'],
+            'answer': 'Vàng (hoặc cam đất)'
+        },
+        {
+            'question': 'Võ cổ truyền nào của người Kinh ở ĐBSCL nổi tiếng với sự dũng mãnh và tính thực chiến cao?',
+            'options': ['Vovinam', 'Karate', 'Bình Định Gia', 'Võ thuật cổ truyền Nam Bộ (Thất Sơn Quyền)'],
+            'answer': 'Võ thuật cổ truyền Nam Bộ (Thất Sơn Quyền)'
+        },
+        {
+            'question': 'Loại bánh ngọt truyền thống nào của người Hoa thường được làm bằng bột nếp, nhân đậu xanh và có hình tròn?',
+            'options': ['Bánh chưng', 'Bánh trung thu', 'Bánh bò', 'Bánh ít'],
+            'answer': 'Bánh trung thu'
+        },
+        {
+            'question': 'Trong các điệu múa truyền thống của người Khmer, điệu múa "Robam Kandal" (Múa Tắm) tượng trưng cho điều gì?',
+            'options': ['Cầu mưa', 'Sự tinh khiết, thanh cao', 'Chiến thắng', 'Lễ hội'],
+            'answer': 'Sự tinh khiết, thanh cao'
+        },
+        {
+            'question': 'Danh nhân nào được mệnh danh là "Người mở cõi" ở phương Nam, có công lớn trong việc khai phá đất Gia Định - Đồng Nai?',
+            'options': ['Nguyễn Hữu Cảnh', 'Mạc Cửu', 'Nguyễn Trung Trực', 'Trịnh Hoài Đức'],
+            'answer': 'Nguyễn Hữu Cảnh'
+        },
+        {
+            'question': 'Người Hoa thường dùng loại hương (nhang) nào với kích thước lớn, màu đỏ để cúng trong các lễ lớn, đặc biệt là Tết?',
+            'options': ['Hương trầm', 'Hương vòng (hương khoanh)', 'Hương cuốn', 'Hương thẻ'],
+            'answer': 'Hương vòng (hương khoanh)'
+        },
+        {
+            'question': 'Cây lúa nước, sản vật quan trọng nhất của ĐBSCL, là đối tượng thờ cúng trong tín ngưỡng nào của người Kinh?',
+            'options': ['Thờ Bà Chúa Xứ', 'Thờ Thần Núi', 'Thờ Thần Nông (ông Hổ, ông Hậu)', 'Thờ Cá Ông'],
+            'answer': 'Thờ Thần Nông (ông Hổ, ông Hậu)'
+        },
+        {
+            'question': 'Lễ hội "Đua bò Bảy Núi" là hoạt động văn hóa thể thao độc đáo của dân tộc nào ở vùng An Giang?',
+            'options': ['Dân tộc Kinh', 'Dân tộc Chăm', 'Dân tộc Khmer', 'Dân tộc Hoa'],
+            'answer': 'Dân tộc Khmer'
+        },
+        {
+            'question': 'Cây cầu nào ở Cần Thơ có kiến trúc hình vòng cung như cánh chim bay, là điểm nhấn nổi bật trên sông Hậu?',
+            'options': ['Cầu Vàm Cống', 'Cầu Cần Thơ', 'Cầu Quang Trung', 'Cầu Hưng Lợi'],
+            'answer': 'Cầu Cần Thơ'
+        },
+        {
+            'question': 'Trong Đờn Ca Tài Tử, loại đàn nào được xem là linh hồn, thường dùng để chơi độc tấu hoặc dẫn dắt tiết tấu?',
+            'options': ['Đàn Bầu', 'Đàn Kìm (Đàn Nguyệt)', 'Đàn Tranh', 'Đàn Tỳ Bà'],
+            'answer': 'Đàn Kìm (Đàn Nguyệt)'
+        },
+        {
+            'question': 'Sản vật nào của Cần Thơ được dùng để làm mứt, ngâm rượu, nổi tiếng là món quà đặc trưng của vùng này?',
+            'options': ['Khóm (Dứa)', 'Củ ấu', 'Mãng cầu', 'Me'],
+            'answer': 'Củ ấu'
+        },
+        {
+            'question': 'Người Hoa thường sử dụng "phong bao lì xì" màu đỏ (hồng bao) trong dịp Tết Nguyên Đán để làm gì?',
+            'options': ['Trang trí nhà cửa', 'Đựng hoa quả cúng', 'Tặng tiền mừng tuổi, cầu may mắn', 'Đựng thư từ'],
+            'answer': 'Tặng tiền mừng tuổi, cầu may mắn'
+        },
+        {
+            'question': 'Lễ hội nào của người Khmer được tổ chức vào khoảng tháng 10 âm lịch để cúng dường chư tăng và kết thúc mùa an cư kiết hạ?',
+            'options': ['Lễ Dolta', 'Lễ Kathina (dâng y)', 'Lễ Chol Chnam Thmay', 'Lễ Visakha Puja'],
+            'answer': 'Lễ Kathina (dâng y)'
+        },
+        {
+            'question': 'Nét độc đáo trong việc bố trí nhà bếp của người Kinh ở miền Tây, gắn liền với việc nấu nướng trên sông nước là gì?',
+            'options': ['Bếp xây bằng đá', 'Bếp đặt ở sân thượng', 'Bếp thường đặt trên ghe (xuồng)', 'Bếp sử dụng năng lượng mặt trời'],
+            'answer': 'Bếp thường đặt trên ghe (xuồng)'
+        },
+        {
+            'question': 'Chùa nào ở Sóc Trăng nổi tiếng với kiến trúc độc đáo mang phong cách kiến trúc Ấn Độ và Thái Lan, có đàn chim dơi cư ngụ?',
+            'options': ['Chùa Chén Kiểu', 'Chùa Dơi (Serây Têchô Mahatúp)', 'Chùa Đất Sét', 'Chùa Pothisomron'],
+            'answer': 'Chùa Dơi (Serây Têchô Mahatúp)'
+        },
+        {
+            'question': 'Món ăn nào của người Kinh ở miền Tây được làm từ các loại lá (như lá cách, lá lốt) cuốn với thịt và mắm, mang đậm vị đồng quê?',
+            'options': ['Bánh xèo', 'Gỏi cuốn', 'Lẩu mắm', 'Bánh khọt'],
+            'answer': 'Gỏi cuốn'
+        },
+        {
+            'question': 'Trong văn hóa Hoa, linh vật nào được sử dụng phổ biến trong các ngôi miếu thờ để trấn giữ và xua đuổi tà khí?',
+            'options': ['Hổ', 'Sư tử đá (hay Tì Hưu)', 'Phượng hoàng', 'Rùa'],
+            'answer': 'Sư tử đá (hay Tì Hưu)'
+        },
+        {
+            'question': 'Địa danh nào ở Cần Thơ nổi tiếng với cảnh quan thiên nhiên trù phú, là nơi du khách có thể tham quan các vườn trái cây?',
+            'options': ['Khu du lịch Mỹ Khánh', 'Núi Cấm', 'Hồ Xuân Hương', 'Đầm Sen'],
+            'answer': 'Khu du lịch Mỹ Khánh'
+        },
+        {
+            'question': 'Nghệ thuật sân khấu nào của người Kinh ở Nam Bộ có nguồn gốc từ tuồng, cải lương, thường được biểu diễn tại các đình làng?',
+            'options': ['Múa Rối Nước', 'Hát Chèo', 'Hát Bội (Tuồng)', 'Múa rối cạn'],
+            'answer': 'Hát Bội (Tuồng)'
+        },
+        {
+            'question': 'Trong nghi lễ "cầu siêu" của người Khmer, người dân thường phóng đăng (thả đèn) trên sông để làm gì?',
+            'options': ['Cầu may mắn', 'Xin Thần Sông phù hộ', 'Tưởng nhớ những người đã khuất', 'Để tìm đường đi'],
+            'answer': 'Tưởng nhớ những người đã khuất'
+        },
+        {
+            'question': 'Lễ Thượng Điền (cúng lúa mới) của người Kinh ở ĐBSCL thường được tổ chức vào thời điểm nào trong năm?',
+            'options': ['Giữa mùa khô', 'Trước khi gieo sạ', 'Sau vụ mùa thu hoạch lúa', 'Đầu mùa lũ'],
+            'answer': 'Sau vụ mùa thu hoạch lúa'
+        },
+        {
+            'question': 'Bánh nào của người Hoa ở miền Tây thường được làm bằng bột mì, nhân thịt xá xíu hoặc thập cẩm, có hình tròn trắng muốt?',
+            'options': ['Bánh chưng', 'Bánh bao', 'Bánh dừa', 'Bánh tiêu'],
+            'answer': 'Bánh bao'
+        },
+        {
+            'question': 'Tác phẩm điêu khắc "Apsara" trong chùa Khmer tượng trưng cho điều gì?',
+            'options': ['Chiến binh', 'Nữ thần ban phước, tiên nữ', 'Quái vật', 'Người bảo vệ'],
+            'answer': 'Nữ thần ban phước, tiên nữ'
+        },
+        {
+            'question': 'Kiến trúc tôn giáo nào là trung tâm sinh hoạt văn hóa, tâm linh quan trọng nhất của cộng đồng người Khmer ở Đồng bằng sông Cửu Long, thường được xây dựng với những mái cong và chóp nhọn nhiều tầng đặc trưng?',
+            'options': ['Đình làng', 'Nhà sàn truyền thống', 'Chùa Khmer (Salas)', 'Miếu Bà Chúa Xứ'],
+            'answer': 'Chùa Khmer (Salas)'
         }
         
     ]
@@ -296,8 +756,16 @@ def minigame():
         )
 
     # GET – hiển thị quiz
-    questions = base_questions.copy()
-    random.shuffle(questions)
+    # questions = base_questions.copy()
+    # random.shuffle(questions)
+
+    # Lấy ngẫu nhiên 10 câu hỏi từ danh sách tổng
+    try:
+        # 🎲 Chọn ngẫu nhiên 10 câu hỏi từ danh sách base_questions
+        questions = random.sample(base_questions, NUM_QUESTIONS)
+    except ValueError:
+        # Xử lý nếu chưa có đủ 10 câu hỏi
+        questions = base_questions.copy()
 
     return render_template('quiz.html', questions=questions)
 
