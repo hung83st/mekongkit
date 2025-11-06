@@ -201,6 +201,7 @@ def minigame():
     if 'user_id' not in session:
         return redirect(url_for('login'))
 
+    NUM_QUESTIONS = 10
     base_questions = [
         {
             'question': 'Người H’mông thường sinh sống ở vùng nào của Việt Nam?',
