@@ -136,6 +136,27 @@
   <h2>🏝️ Dashboard của bạn</h2>
   <p>Điểm hiện tại: <strong>{{ user.points }}</strong></p>
 
+  {% if user.points < 100 %}
+  <p>🎉 Cấp hiện tại: <strong>Người mới khám phá 🌱</strong></p>
+{% elif user.points < 250 %}
+  <p>🎉 Cấp hiện tại: <strong>Nhà thám hiểm trẻ 🧭</strong></p>
+{% elif user.points < 500 %}
+  <p>🎉 Cấp hiện tại: <strong>Người du hành văn hóa 🏮</strong></p>
+{% elif user.points < 750 %}
+  <p>🎉 Cấp hiện tại: <strong>Đại sứ văn hóa 🏝️</strong></p>
+{% elif user.points < 1000 %}
+  <p>🎉 Cấp hiện tại: <strong>Nhà nghiên cứu di sản 📜</strong></p>
+{% elif user.points < 5000 %}
+  <p>🏆 Cấp hiện tại: <strong>Huyền thoại Cần Thơ 🏆</strong></p>
+{% elif user.points < 10000 %}
+  <p>🏯 Cấp hiện tại: <strong>Bậc Thầy Văn Hóa 🏯</strong></p>
+{% elif user.points < 20000 %}
+  <p>🐉 Cấp hiện tại: <strong>Danh Nhân Miền Tây 🐉</strong></p>
+{% elif user.points < 50000 %}
+  <p>🌊 Cấp hiện tại: <strong>Đại Hiền Giả Sông Hậu 🌊</strong></p>
+{% else %}
+  <p>👑 Cấp hiện tại: <strong>Huyền Thoại Bất Diệt 👑</strong></p>
+{% endif %}
   <div class="section-divider"></div>
 
   <h3>🏞️ Check-in các địa điểm (Kinh):</h3>
