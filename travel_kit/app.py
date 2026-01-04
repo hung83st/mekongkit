@@ -96,6 +96,50 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
 
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        username = request.form['username']
+        user = User.query.filter_by(username=username).first()
+
+        if not user:
+            return render_template(
+                'forgot_password.html',
+                error="❌ Tài khoản không tồn tại!"
+            )
+
+        session['reset_user_id'] = user.id
+        return redirect(url_for('reset_password'))
+
+    return render_template('forgot_password.html')
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password():
+    if 'reset_user_id' not in session:
+        flash("⚠️ Phiên đặt lại mật khẩu không hợp lệ!", "warning")
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        new_password = request.form['new_password']
+        confirm = request.form['confirm_password']
+
+        if new_password != confirm:
+            return render_template(
+                'reset_password.html',
+                error="❌ Mật khẩu xác nhận không khớp!"
+            )
+
+        user = User.query.get(session['reset_user_id'])
+        user.password_hash = generate_password_hash(new_password)
+        db.session.commit()
+
+        session.pop('reset_user_id')
+        flash("✅ Đặt lại mật khẩu thành công! Hãy đăng nhập.", "success")
+        return redirect(url_for('login'))
+
+    return render_template('reset_password.html')
+    
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
