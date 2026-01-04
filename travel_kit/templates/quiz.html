@@ -91,7 +91,35 @@
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(255,152,0,0.5);
   }
+  
+  /* 🔙 Nút quay lại Dashboard */
+.back-btn {
+  position: fixed;        /* cố định góc màn hình */
+  top: 20px;
+  left: 25px;
+  background: #1565c0;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 1000;          /* luôn nằm trên */
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-btn:hover {
+  background: #0d47a1;
+  transform: translateY(-2px);
+}
+  
 </style>
+
+<!-- 🔙 Nút quay lại -->
+<a href="{{ url_for('dashboard') }}" class="back-btn">
+  ⬅️ Quay lại Dashboard
+</a>
 
 <div class="quiz-container">
   <h2 class="quiz-title">🧠 Mini-Game: Thử tài hiểu biết văn hoá Việt!</h2>
