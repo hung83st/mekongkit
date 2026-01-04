@@ -130,10 +130,117 @@
       grid-template-columns: 1fr;
     }
   }
+
+  .level-box {
+  margin: 20px auto;
+  background: #fff3e0;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.level-icon {
+  font-size: 26px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: #ffe0b2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  transition: width 0.6s ease;
+}
+
+.tribe-tabs a {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 2px solid #ff9800;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tribe-tabs a:hover {
+  background: #ff9800;
+  color: #fff;
+}
 </style>
 
 <div class="dashboard-container">
-  <h2>🏝️ Dashboard của bạn</h2>
+  <h2> Dashboard của bạn</h2>
+
+  <div class="level-box">
+    <div class="level-header">
+      <span class="level-icon">
+        {% if user.points < 100 %} 🌱
+        {% elif user.points < 250 %} 🧭
+        {% elif user.points < 500 %} 🏮
+        {% elif user.points < 750 %} 🏝️
+        {% elif user.points < 1000 %}📜
+        {% elif user.points < 5000 %} 🏆
+        {% elif user.points < 10000 %} 🏯
+        {% elif user.points < 20000 %} 🐉
+        {% elif user.points < 50000 %} 🌊
+        {% else %} 👑
+        {% endif %}
+      </span>
+      <span class="level-name">
+        {% if user.points < 100 %} Người mới khám phá 
+        {% elif user.points < 250 %} Nhà thám hiểm trẻ 
+        {% elif user.points < 500 %} Người du hành văn hóa 
+        {% elif user.points < 750 %} Đại sứ văn hóa 
+        {% elif user.points < 1000 %} Nhà nghiên cứu di sản
+        {% elif user.points < 5000 %} Huyền thoại Cần Thơ
+        {% elif user.points < 10000 %} Bậc Thầy Văn Hóa
+        {% elif user.points < 20000 %} Danh Nhân Miền Tây
+        {% elif user.points < 50000 %} Đại Hiền Giả Sông Hậu
+        {% else %} Huyền thoại bất diệt
+        {% endif %}
+      </span>
+    </div>
+  
+    <div class="progress-bar">
+      <div class="progress-fill"
+      style="width:
+      {% if user.points < 100 %}
+        {{ user.points }}%
+      {% elif user.points < 250 %}
+        {{ ((user.points - 100) / 150 * 100) | round(0) }}%
+      {% elif user.points < 500 %}
+        {{ ((user.points - 250) / 250 * 100) | round(0) }}%
+      {% elif user.points < 750 %}
+        {{ ((user.points - 500) / 250 * 100) | round(0) }}%
+      {% elif user.points < 1000 %}
+        {{ ((user.points - 750) / 250 * 100) | round(0) }}%
+      {% elif user.points < 5000 %}
+        {{ ((user.points - 1000) / 4000 * 100) | round(0) }}%
+      {% elif user.points < 10000 %}
+        {{ ((user.points - 5000) / 5000 * 100) | round(0) }}%
+      {% elif user.points < 20000 %}
+        {{ ((user.points - 10000) / 10000 * 100) | round(0) }}%
+      {% elif user.points < 50000 %}
+        {{ ((user.points - 20000) / 30000 * 100) | round(0) }}%
+      {% else %}
+        100%
+      {% endif %}">
+      </div>
+    </div>
+  </div>
   <p>Điểm hiện tại: <strong>{{ user.points }}</strong></p>
 
   {% if user.points < 100 %}
@@ -191,6 +298,15 @@
   </ul>
 
   <div class="section-divider"></div>
-<h3>Mini-game:</h3>
-<a href="{{ url_for('minigame') }}">Chơi mini-game nhận điểm thưởng!</a>
+
+  <h3>🎯 Mini-game:</h3>
+  <a href="{{ url_for('minigame') }}" class="minigame-link">Chơi mini-game nhận điểm thưởng! 🎉</a>
+  <h3>🎯 Mini-game theo dân tộc</h3>
+
+  <div class="tribe-tabs">
+    <a href="{{ url_for('minigame') }}?type=kinh">🏞️ Kinh</a>
+    <a href="{{ url_for('minigame') }}?type=khmer">🛕 Khmer</a>
+    <a href="{{ url_for('minigame') }}?type=hoa">🏮 Hoa</a>
+  </div>
+</div>
 {% endblock %}
