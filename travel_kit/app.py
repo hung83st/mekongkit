@@ -791,6 +791,9 @@ def profile():
     user = User.query.get(session['user_id'])
     return render_template('profile.html', user=user)
 
+@app.route("/rewards")
+def rewards():
+    return render_template("rewards.html")
 
 # --- Chạy app ---
 if __name__ == '__main__':
