@@ -179,44 +179,368 @@
   background: #ff9800;
   color: #fff;
 }
+/* tạo ô vuông nhỏ */
+.checkin-box {
+  width: 260px;
+  border: 2px solid #4da3ff;
+  border-radius: 12px;
+  padding: 12px;
+  background: #f0f8ff;
+  cursor: pointer;
+}
+
+.checkin-title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkin-list {
+  margin-top: 10px;
+  padding-left: 18px;
+  display: none;
+}
+
+.checkin-list li {
+  margin: 6px 0;
+}
+
+.checkin-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.checkin-list a:hover {
+  color: #4da3ff;
+}
+/* CSS “Quick Stats” */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* CSS "Mini-game CTA" */
+.minigame-cta {
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #7c4dff, #536dfe);
+  color: white;
+  box-shadow: 0 10px 25px rgba(83,109,254,0.4);
+  transition: transform 0.3s ease;
+}
+
+.minigame-cta:hover {
+  transform: scale(1.03);
+}
+/* CSS bổ sung cho header */
+.level-header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff7e6;
+  padding: 20px 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  margin-bottom: 15px;
+}
+
+.level-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.level-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+}
+
+.level-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.level-rank {
+  font-size: 14px;
+  color: #888;
+  font-weight: 600;
+}
+
+.level-name-main {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.level-right {
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff9800;
+}
+
+.level-right small {
+  font-size: 13px;
+  color: #777;
+}
+/* CSS nhẹ cho phần info */
+.level-progress-info {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.level-progress-info span {
+  font-weight: 600;
+  color: #ff9800;
+}
+
+/* ===== Lộ trình dân tộc Kinh ===== */
+.kinh-route {
+  margin-top: 50px;
+  padding: 25px;
+  background: #fffaf0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.kinh-route h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ff9800;
+}
+
+.route-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.route-line::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffcc80, #ff9800);
+  z-index: 0;
+  border-radius: 2px;
+}
+
+.route-node {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 120px;
+}
+
+.route-node a {
+  text-decoration: none;
+  color: #333;
+}
+
+.node-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #ff9800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 8px;
+  transition: all 0.3s ease;
+}
+
+.route-node:hover .node-circle {
+  background: #ff9800;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.node-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.map-section {
+  margin-top: 50px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+#vietnamMap {
+  height: 500px;
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/* .popup-card {
+  width: 220px;
+  font-family: inherit;
+}
+
+.popup-card img {
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.popup-title {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.popup-meta {
+  font-size: 13px;
+  color: #666;
+}
+
+.popup-btn {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  background: #ff9800;
+  color: white;
+  cursor: pointer;
+}
+
+.popup-btn:hover {
+  background: #e68900;
+}
+
+.leaflet-marker-icon:hover {
+  transform: scale(1.15);
+  transition: 0.2s;
+} */
+
+
 </style>
 
 <div class="dashboard-container">
   <h2> Dashboard của bạn</h2>
 
   <div class="level-box">
-    <div class="level-header">
-      <span class="level-icon">
-        {% if user.points < 100 %} 🌱
-        {% elif user.points < 250 %} 🧭
-        {% elif user.points < 500 %} 🏮
-        {% elif user.points < 750 %} 🏝️
-        {% elif user.points < 1000 %}📜
-        {% elif user.points < 5000 %} 🏆
-        {% elif user.points < 10000 %} 🏯
-        {% elif user.points < 20000 %} 🐉
-        {% elif user.points < 50000 %} 🌊
-        {% else %} 👑
-        {% endif %}
-      </span>
-      <span class="level-name">
-        {% if user.points < 100 %} Người mới khám phá 
-        {% elif user.points < 250 %} Nhà thám hiểm trẻ 
-        {% elif user.points < 500 %} Người du hành văn hóa 
-        {% elif user.points < 750 %} Đại sứ văn hóa 
-        {% elif user.points < 1000 %} Nhà nghiên cứu di sản
-        {% elif user.points < 5000 %} Huyền thoại Cần Thơ
-        {% elif user.points < 10000 %} Bậc Thầy Văn Hóa
-        {% elif user.points < 20000 %} Danh Nhân Miền Tây
-        {% elif user.points < 50000 %} Đại Hiền Giả Sông Hậu
-        {% else %} Huyền thoại bất diệt
-        {% endif %}
-      </span>
+    
+    <div class="stats-grid">
+      <div class="stat-card green">
+        <div class="stat-icon">📍</div>
+        <div class="stat-value">{{ checked_in_count }}</div>
+        <div class="stat-label">Địa điểm đã đến</div>
+      </div>
+    
+      <div class="stat-card yellow">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-value">{{ user.achievements|length }}</div>
+        <div class="stat-label">Thành tựu</div>
+      </div>
+    
+      <div class="stat-card red">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-value">{{ user.streak }} ngày</div>
+        <div class="stat-label">Streak</div>
+      </div>
+    
+      <div class="stat-card blue">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-value">{{ active_quests }}</div>
+        <div class="stat-label">Nhiệm vụ</div>
+      </div>
     </div>
+    
+    <div class="level-header-box">
+      <!-- BÊN TRÁI: HUY HIỆU + CẤP -->
+      <div class="level-left">
+        <div class="level-badge">
+          {% if user.points < 100 %} 🌱
+          {% elif user.points < 250 %} 🧭
+          {% elif user.points < 500 %} 🏮
+          {% elif user.points < 750 %} 🏝️
+          {% elif user.points < 1000 %} 📜
+          {% elif user.points < 5000 %} 🏆
+          {% elif user.points < 10000 %} 🏯
+          {% elif user.points < 20000 %} 🐉
+          {% elif user.points < 50000 %} 🌊
+          {% else %} 👑
+          {% endif %}
+        </div>
+    
+        <div class="level-info">
+          <div class="level-rank">
+            {% if user.points < 100 %} Cấp độ 1
+            {% elif user.points < 250 %} Cấp độ 2
+            {% elif user.points < 500 %} Cấp độ 3
+            {% elif user.points < 750 %} Cấp độ 4
+            {% elif user.points < 1000 %} Cấp độ 5
+            {% elif user.points < 5000 %} Cấp độ 6
+            {% elif user.points < 10000 %} Cấp độ 7
+            {% elif user.points < 20000 %} Cấp độ 8
+            {% elif user.points < 50000 %} Cấp độ 9
+            {% else %} Cấp độ 10
+            {% endif %}
+          </div>
+    
+          <div class="level-name-main">
+            {% if user.points < 100 %} Người mới khám phá
+            {% elif user.points < 250 %} Nhà thám hiểm trẻ
+            {% elif user.points < 500 %} Người du hành văn hóa
+            {% elif user.points < 750 %} Đại sứ văn hóa
+            {% elif user.points < 1000 %} Nhà nghiên cứu di sản
+            {% elif user.points < 5000 %} Huyền thoại Cần Thơ
+            {% elif user.points < 10000 %} Bậc Thầy Văn Hóa
+            {% elif user.points < 20000 %} Danh Nhân Miền Tây
+            {% elif user.points < 50000 %} Đại Hiền Giả Sông Hậu
+            {% else %} Huyền thoại bất diệt
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    
+      <!-- BÊN PHẢI: ĐIỂM -->
+      <div class="level-right">
+        ⭐ <strong>{{ user.points }}</strong><br>
+        <small>điểm tích lũy</small>
+      </div>
+    </div>
+    
+
+
   
     <div class="progress-bar">
       <div class="progress-fill"
-      style="width:
+      style="width: 
       {% if user.points < 100 %}
         {{ user.points }}%
       {% elif user.points < 250 %}
@@ -240,6 +564,49 @@
       {% endif %}">
       </div>
     </div>
+
+    <div class="level-progress-info">
+      {% if user.points < 100 %}
+        ⬆️ Còn {{ 100 - user.points }} điểm
+        <span>· Cấp tiếp: 🧭 Nhà thám hiểm trẻ</span>
+    
+      {% elif user.points < 250 %}
+        ⬆️ Còn {{ 250 - user.points }} điểm
+        <span>· Cấp tiếp: 🏮 Người du hành văn hóa</span>
+    
+      {% elif user.points < 500 %}
+        ⬆️ Còn {{ 500 - user.points }} điểm
+        <span>· Cấp tiếp: 🏝️ Đại sứ văn hóa</span>
+    
+      {% elif user.points < 750 %}
+        ⬆️ Còn {{ 750 - user.points }} điểm
+        <span>· Cấp tiếp: 📜 Nhà nghiên cứu di sản</span>
+    
+      {% elif user.points < 1000 %}
+        ⬆️ Còn {{ 1000 - user.points }} điểm
+        <span>· Cấp tiếp: 🏆 Huyền thoại Cần Thơ</span>
+    
+      {% elif user.points < 5000 %}
+        ⬆️ Còn {{ 5000 - user.points }} điểm
+        <span>· Cấp tiếp: 🏯 Bậc Thầy Văn Hóa</span>
+    
+      {% elif user.points < 10000 %}
+        ⬆️ Còn {{ 10000 - user.points }} điểm
+        <span>· Cấp tiếp: 🐉 Danh Nhân Miền Tây</span>
+    
+      {% elif user.points < 20000 %}
+        ⬆️ Còn {{ 20000 - user.points }} điểm
+        <span>· Cấp tiếp: 🌊 Đại Hiền Giả Sông Hậu</span>
+    
+      {% elif user.points < 50000 %}
+        ⬆️ Còn {{ 50000 - user.points }} điểm
+        <span>· Cấp tiếp: 👑 Huyền thoại bất diệt</span>
+    
+      {% else %}
+        👑 Bạn đã đạt cấp tối đa
+      {% endif %}
+    </div>
+    
   </div>
   <p>Điểm hiện tại: <strong>{{ user.points }}</strong></p>
 
@@ -266,47 +633,550 @@
 {% endif %}
   <div class="section-divider"></div>
 
-  <h3>🏞️ Check-in các địa điểm (Kinh):</h3>
-  <ul>
-    <li><a href="{{ url_for('ben_ninh_kieu') }}">Bến Ninh Kiều</a></li>
-    <li><a href="{{ url_for('cau_di_bo') }}">Cầu đi bộ</a></li>
-    <li><a href="{{ url_for('nha_co_binh_thuy') }}">Nhà cổ Bình Thủy</a></li>
-    <li><a href="{{ url_for('cho_noi_cai_rang') }}">Chợ nổi Cái Răng</a></li>
-    <li><a href="{{ url_for('den_vua_hung') }}">Đền Vua Hùng</a></li>
-  </ul>
+  <div class="checkin-box" onclick="toggleList(this)">
+    <div class="checkin-title">
+      🏞️ Check-in các địa điểm (Kinh)
+      <span class="arrow">▼</span>
+    </div>
+  
+    <ul id="kinh-list" class="checkin-list">
+      <li><a href="{{ url_for('ben_ninh_kieu') }}">Bến Ninh Kiều</a></li>
+      <li><a href="{{ url_for('cau_di_bo') }}">Cầu đi bộ</a></li>
+      <li><a href="{{ url_for('nha_co_binh_thuy') }}">Nhà cổ Bình Thủy</a></li>
+      <li><a href="{{ url_for('cho_noi_cai_rang') }}">Chợ nổi Cái Răng</a></li>
+      <li><a href="{{ url_for('den_vua_hung') }}">Đền Vua Hùng</a></li>
+    </ul>
+  </div>
 
-  <div class="section-divider"></div>
+  <div class="checkin-box" onclick="toggleList(this)">
+    <div class="checkin-title">
+      🛕 Check-in các địa điểm (Khmer)
+      <span class="arrow">▼</span>
+    </div>
+  
+    <ul id="khmer-list" class="checkin-list">
+      <li><a href="{{ url_for('chua_pothisomron') }}">Chùa Pothisomron</a></li>
+      <li><a href="{{ url_for('chua_muniransay') }}">Chùa Muniransay</a></li>
+      <li><a href="{{ url_for('chua_doi') }}">Chùa Dơi</a></li>
+      <li><a href="{{ url_for('chua_som_rong') }}">Chùa Som Rong</a></li>
+      <li><a href="{{ url_for('chua_chen_kieu') }}">Chùa Chén Kiểu</a></li>
+    </ul>
+  </div>
 
-  <h3>🛕 Check-in các địa điểm (Khmer):</h3>
-  <ul>
-    <li><a href="{{ url_for('chua_pothisomron') }}">Chùa Pothisomron</a></li>
-    <li><a href="{{ url_for('chua_muniransay') }}">Chùa Muniransay</a></li>
-    <li><a href="{{ url_for('chua_doi') }}">Chùa Dơi</a></li>
-    <li><a href="{{ url_for('chua_som_rong') }}">Chùa Som Rong</a></li>
-    <li><a href="{{ url_for('chua_chen_kieu') }}">Chùa Chén Kiểu</a></li>
-  </ul>
 
-  <div class="section-divider"></div>
+  <div class="checkin-box" onclick="toggleList(this)">
+    <div class="checkin-title">
+      🏮 Check-in các địa điểm (Hoa)
+      <span class="arrow">▼</span>
+    </div>
+  
+    <ul id="hoa-list" class="checkin-list">
+      <li><a href="{{ url_for('chua_ong') }}">Chùa Ông</a></li>
+      <li><a href="{{ url_for('hiep_thien_cung') }}">Hiệp Thiên Cung</a></li>
+      <li><a href="{{ url_for('tiem_che_huu_hoa') }}">Tiệm chè Hữu Hòa</a></li>
+      <li><a href="{{ url_for('chua_ba_thien_hau') }}">Chùa Bà Thiên Hậu</a></li>
+      <li><a href="{{ url_for('quan_thanh_de_co_mieu_quang_dong') }}">Quan Thánh Đế Cổ Miếu Quảng Đông</a></li>
+    </ul>
+  </div>
 
-  <h3>🏮 Check-in các địa điểm (Hoa):</h3>
-  <ul>
-    <li><a href="{{ url_for('chua_ong') }}">Chùa Ông</a></li>
-    <li><a href="{{ url_for('hiep_thien_cung') }}">Hiệp Thiên Cung</a></li>
-    <li><a href="{{ url_for('tiem_che_huu_hoa') }}">Tiệm chè Hữu Hòa</a></li>
-    <li><a href="{{ url_for('chua_ba_thien_hau') }}">Chùa Bà Thiên Hậu</a></li>
-    <li><a href="{{ url_for('quan_thanh_de_co_mieu_quang_dong') }}">Quan Thánh Đế Cổ Miếu Quảng Đông</a></li>
-  </ul>
 
-  <div class="section-divider"></div>
+  <!-- <div class="section-divider"></div>
 
   <h3>🎯 Mini-game:</h3>
   <a href="{{ url_for('minigame') }}" class="minigame-link">Chơi mini-game nhận điểm thưởng! 🎉</a>
-  <h3>🎯 Mini-game theo dân tộc</h3>
-
+  <h3>🎯 Mini-game theo dân tộc</h3> -->
+  <div class="minigame-cta">
+    <h3>🎮 Mini-game</h3>
+    <p>Trả lời câu hỏi về văn hóa Cần Thơ để nhận thêm điểm</p>
+    <p><strong>✨ Chơi mini-game nhận điểm thưởng! 🎉</strong></p>
+  
+    <a href="{{ url_for('minigame') }}" class="minigame-link">
+      Chơi ngay 🚀
+    </a>
+  </div>
+  
   <div class="tribe-tabs">
+    <h3>🎯 Mini-game theo dân tộc</h3>
     <a href="{{ url_for('minigame') }}?type=kinh">🏞️ Kinh</a>
     <a href="{{ url_for('minigame') }}?type=khmer">🛕 Khmer</a>
     <a href="{{ url_for('minigame') }}?type=hoa">🏮 Hoa</a>
   </div>
+  <div class="kinh-route">
+    <h3>🧭 Lộ trình khám phá dân tộc Kinh</h3>
+  
+    <div class="route-line">
+      <div class="route-node">
+        {% if progress.get('ben-ninh-kieu') and progress['ben-ninh-kieu'].completed %}
+          
+          <!-- ✅ ĐÃ HOÀN THÀNH → KHÔNG CLICK -->
+          <div class="node-circle completed">
+            ✔️
+          </div>
+          <div class="node-label completed-text">
+            Bến Ninh Kiều
+          </div>
+      
+        {% else %}
+      
+          <!-- 🔓 CHƯA HOÀN THÀNH → CLICK ĐƯỢC -->
+          <a href="{{ url_for('kinh_route_node', location_key='ben-ninh-kieu') }}">
+            <div class="node-circle">
+              🌊
+            </div>
+            <div class="node-label">Bến Ninh Kiều</div>
+          </a>
+      
+        {% endif %}
+      </div>
+      
+  
+      <div class="route-node">
+        {% if progress.get('cau-di-bo') and progress['cau-di-bo'].completed %}
+          
+        <!-- ✅ ĐÃ HOÀN THÀNH → KHÔNG CLICK -->
+        <div class="node-circle completed">
+          ✔️
+        </div>
+        <div class="node-label completed-text">
+          Cầu Đi Bộ
+        </div>
+    
+        {% else %}
+          <a href="{{ url_for('kinh_route_node', location_key='cau-di-bo') }}">
+            <div class="node-circle">
+              🌉
+            </div>
+            <div class="node-label">Cầu đi bộ</div>
+          </a>
+      
+        {% endif %}
+      </div>
+      
+  
+      <div class="route-node">
+        {% if progress.get('nha_co_binh_thuy') and progress['nha_co_binh_thuy'].completed %}
+          
+        <!-- ✅ ĐÃ HOÀN THÀNH → KHÔNG CLICK -->
+        <div class="node-circle completed">
+          ✔️
+        </div>
+        <div class="node-label completed-text">
+          Nhà Cổ Bình Thủy
+        </div>
+
+        {% else %}
+        <a href="{{ url_for('kinh_route_node', location_key='nha_co_binh_thuy') }}">
+          <div class="node-circle">
+            🏡
+          </div>
+          <div class="node-label">Nhà cổ Bình Thủy</div>
+        </a>
+
+        {% endif %}
+      </div>
+  
+      <div class="route-node">
+        {% if progress.get('cho_noi_cai_rang') and progress['cho_noi_cai_rang'].completed %}
+          
+        <!-- ✅ ĐÃ HOÀN THÀNH → KHÔNG CLICK -->
+        <div class="node-circle completed">
+          ✔️
+        </div>
+        <div class="node-label completed-text">
+          Chợ Nổi Cái Răng
+        </div>
+
+        {% else %}
+        <a href="{{ url_for('kinh_route_node', location_key='cho_noi_cai_rang') }}">
+          <div class="node-circle">
+            🚤
+          </div>
+          <div class="node-label">Chợ Nổi Cái Răng</div>
+        </a>
+
+        {% endif %}
+      </div>
+  
+      <div class="route-node">
+        {% if progress.get('den_vua_hung') and progress['den_vua_hung'].completed %}
+          
+        <!-- ✅ ĐÃ HOÀN THÀNH → KHÔNG CLICK -->
+        <div class="node-circle completed">
+          ✔️
+        </div>
+        <div class="node-label completed-text">
+          Đền Vua Hùng
+        </div>
+
+        {% else %}
+        <a href="{{ url_for('kinh_route_node', location_key='den_vua_hung') }}">
+          <div class="node-circle">
+            🏛️
+          </div>
+          <div class="node-label">Đền Vua Hùng</div>
+        </a>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="khmer-route">
+    <h3>🧭 Lộ trình khám phá dân tộc Khmer</h3>
+  
+    <div class="route-line">
+  
+      <!-- 🛕 Chùa Pothisomron -->
+      <div class="route-node">
+        {% if khmer_progress.get('chua-pothisomron') and khmer_progress['chua-pothisomron'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Pothisomron</div>
+        {% else %}
+          <a href="{{ url_for('khmer_route_node', location_key='chua-pothisomron') }}">
+            <div class="node-circle">🛕</div>
+            <div class="node-label">Chùa Pothisomron</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🛕 Chùa Muniransay -->
+      <div class="route-node">
+        {% if khmer_progress.get('chua_muniransay') and khmer_progress['chua_muniransay'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Muniransay</div>
+        {% else %}
+          <a href="{{ url_for('khmer_route_node', location_key='chua_muniransay') }}">
+            <div class="node-circle">🛕</div>
+            <div class="node-label">Chùa Muniransay</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🦇 Chùa Dơi -->
+      <div class="route-node">
+        {% if khmer_progress.get('chua_doi') and khmer_progress['chua_doi'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Dơi</div>
+        {% else %}
+          <a href="{{ url_for('khmer_route_node', location_key='chua_doi') }}">
+            <div class="node-circle">🦇</div>
+            <div class="node-label">Chùa Dơi</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🛕 Chùa Som Rong -->
+      <div class="route-node">
+        {% if khmer_progress.get('chua_som_rong') and khmer_progress['chua_som_rong'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Som Rong</div>
+        {% else %}
+          <a href="{{ url_for('khmer_route_node', location_key='chua_som_rong') }}">
+            <div class="node-circle">🛕</div>
+            <div class="node-label">Chùa Som Rong</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🏺 Chùa Chén Kiểu -->
+      <div class="route-node">
+        {% if khmer_progress.get('chua_chen_kieu') and khmer_progress['chua_chen_kieu'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Chén Kiểu</div>
+        {% else %}
+          <a href="{{ url_for('khmer_route_node', location_key='chua_chen_kieu') }}">
+            <div class="node-circle">🏺</div>
+            <div class="node-label">Chùa Chén Kiểu</div>
+          </a>
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+
+  <div class="hoa-route">
+    <h3>🧭 Lộ trình khám phá dân tộc Hoa</h3>
+  
+    <div class="route-line">
+  
+      <!-- 🏮 Chùa Ông -->
+      <div class="route-node">
+        {% if hoa_progress.get('chua-ong') and hoa_progress['chua-ong'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Ông</div>
+        {% else %}
+          <a href="{{ url_for('hoa_route_node', location_key='chua-ong') }}">
+            <div class="node-circle">🏮</div>
+            <div class="node-label">Chùa Ông</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🏮 Hiệp Thiên Cung -->
+      <div class="route-node">
+        {% if hoa_progress.get('hiep-thien-cung') and hoa_progress['hiep-thien-cung'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Hiệp Thiên Cung</div>
+        {% else %}
+          <a href="{{ url_for('hoa_route_node', location_key='hiep-thien-cung') }}">
+            <div class="node-circle">🏮</div>
+            <div class="node-label">Hiệp Thiên Cung</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🍧 Tiệm chè Hữu Hòa -->
+      <div class="route-node">
+        {% if hoa_progress.get('tiem-che-huu-hoa') and hoa_progress['tiem-che-huu-hoa'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Tiệm chè Hữu Hòa</div>
+        {% else %}
+          <a href="{{ url_for('hoa_route_node', location_key='tiem-che-huu-hoa') }}">
+            <div class="node-circle">🍧</div>
+            <div class="node-label">Tiệm chè Hữu Hòa</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🏮 Chùa Bà Thiên Hậu -->
+      <div class="route-node">
+        {% if hoa_progress.get('chua-ba-thien-hau') and hoa_progress['chua-ba-thien-hau'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">Chùa Bà Thiên Hậu</div>
+        {% else %}
+          <a href="{{ url_for('hoa_route_node', location_key='chua-ba-thien-hau') }}">
+            <div class="node-circle">🏮</div>
+            <div class="node-label">Chùa Bà Thiên Hậu</div>
+          </a>
+        {% endif %}
+      </div>
+  
+      <!-- 🏺 Quan Thánh Đế Cổ Miếu Quảng Đông -->
+      <div class="route-node">
+        {% if hoa_progress.get('quan-thanh-de-co-mieu-quang-dong') 
+              and hoa_progress['quan-thanh-de-co-mieu-quang-dong'].completed %}
+          <div class="node-circle completed">✔️</div>
+          <div class="node-label completed-text">
+            Quan Thánh Đế Cổ Miếu Quảng Đông
+          </div>
+        {% else %}
+          <a href="{{ url_for('hoa_route_node', location_key='quan-thanh-de-co-mieu-quang-dong') }}">
+            <div class="node-circle">🏺</div>
+            <div class="node-label">
+              Quan Thánh Đế Cổ Miếu Quảng Đông
+            </div>
+          </a>
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+  
+  <div class="section-divider"></div>
+
+  <div class="map-section">
+    <h3>🗺️ Bản đồ khám phá văn hóa Việt Nam</h3>
+    <div style="margin-bottom:10px;">
+      <button onclick="filterMarkers('all')">🌍 Tất cả</button>
+      <button onclick="filterMarkers('Kinh')">🏞️ Kinh</button>
+      <button onclick="filterMarkers('Khmer')">🛕 Khmer</button>
+      <button onclick="filterMarkers('Hoa')">🏮 Hoa</button>
+    </div>
+    
+    <div id="vietnamMap"></div>
+  </div>
+
+  
 </div>
+
+<script>
+  function toggleList(box) {
+    const list = box.querySelector(".checkin-list");
+    const arrow = box.querySelector(".arrow");
+  
+    const isOpen = list.style.display === "block";
+  
+    document.querySelectorAll(".checkin-list").forEach(l => l.style.display = "none");
+    document.querySelectorAll(".arrow").forEach(a => a.innerHTML = "▼");
+  
+    if (!isOpen) {
+      list.style.display = "block";
+      arrow.innerHTML = "▲";
+    }
+  }
+  </script>
+
+  <script>
+  document.querySelectorAll('.stat-card').forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.1}s`;
+  });
+  </script>
+  
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+      // Tạo map
+      var map = L.map('vietnamMap').setView([10.0452, 105.7469], 12); 
+      // 10.0452, 105.7469 là tọa độ Cần Thơ
+    
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+    
+      // ===== DANH SÁCH ĐỊA ĐIỂM =====
+    
+      var locations = [
+    
+        // ===== KINH =====
+        { name: "Bến Ninh Kiều", coords: [10.0341, 105.7876], type: "Kinh" },
+        { name: "Cầu Đi Bộ", coords: [10.0337, 105.7888], type: "Kinh" },
+        { name: "Nhà Cổ Bình Thủy", coords: [10.0602, 105.7387], type: "Kinh" },
+        { name: "Chợ Nổi Cái Răng", coords: [10.0006, 105.7463], type: "Kinh" },
+        { name: "Đền Vua Hùng", coords: [10.0314, 105.7640], type: "Kinh" },
+    
+        // ===== KHMER =====
+        { name: "Chùa Pothisomron", coords: [10.0372, 105.7800], type: "Khmer" },
+        { name: "Chùa Muniransay", coords: [10.0345, 105.7802], type: "Khmer" },
+        { name: "Chùa Dơi", coords: [9.6037, 105.9716], type: "Khmer" },
+        { name: "Chùa Som Rong", coords: [9.5924, 105.9738], type: "Khmer" },
+        { name: "Chùa Chén Kiểu", coords: [9.6081, 105.9649], type: "Khmer" },
+    
+        // ===== HOA =====
+        { name: "Chùa Ông", coords: [10.0349, 105.7870], type: "Hoa" },
+        { name: "Hiệp Thiên Cung", coords: [10.0340, 105.7875], type: "Hoa" },
+        { name: "Tiệm Chè Hữu Hòa", coords: [10.0343, 105.7872], type: "Hoa" },
+        { name: "Chùa Bà Thiên Hậu", coords: [10.0346, 105.7878], type: "Hoa" },
+        { name: "Quan Thánh Đế Cổ Miếu Quảng Đông", coords: [10.0348, 105.7874], type: "Hoa" }
+    
+      ];
+    
+      // Thêm marker
+      locations.forEach(function(loc) {
+        L.marker(loc.coords)
+          .addTo(map)
+          .bindPopup("<b>" + loc.name + "</b><br>Dân tộc: " + loc.type);
+      });
+    
+    });
+    </script> -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      
+        var map = L.map('vietnamMap').setView([10.0452, 105.7469], 12);
+      
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+      
+        // ===== ICON MÀU THEO DÂN TỘC =====
+      
+        const iconKinh = new L.Icon({
+          iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          iconSize: [25, 41],
+          iconAnchor: [12, 41]
+        });
+      
+        const iconKhmer = new L.Icon({
+          iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          iconSize: [25, 41],
+          iconAnchor: [12, 41]
+        });
+      
+        const iconHoa = new L.Icon({
+          iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          iconSize: [25, 41],
+          iconAnchor: [12, 41]
+        });
+      
+        // ===== DANH SÁCH ĐỊA ĐIỂM =====
+      
+        var locations = [
+          { name: "Bến Ninh Kiều", coords: [10.0322715, 105.7856559], type: "Kinh" },
+          { name: "Cầu Đi Bộ", coords: [10.0337, 105.7888], type: "Kinh" },
+          { name: "Nhà Cổ Bình Thủy", coords: [10.0602, 105.7387], type: "Kinh" },
+          { name: "Chợ Nổi Cái Răng", coords: [10.0006, 105.7463], type: "Kinh" },
+          { name: "Đền Vua Hùng", coords: [10.0314, 105.7640], type: "Kinh" },
+      
+          { name: "Chùa Pothisomron", coords: [10.0372, 105.7800], type: "Khmer" },
+          { name: "Chùa Muniransay", coords: [10.0345, 105.7802], type: "Khmer" },
+          { name: "Chùa Dơi", coords: [9.6037, 105.9716], type: "Khmer" },
+          { name: "Chùa Som Rong", coords: [9.5924, 105.9738], type: "Khmer" },
+          { name: "Chùa Chén Kiểu", coords: [9.6081, 105.9649], type: "Khmer" },
+      
+          { name: "Chùa Ông", coords: [10.0349, 105.7870], type: "Hoa" },
+          { name: "Hiệp Thiên Cung", coords: [10.0340, 105.7875], type: "Hoa" },
+          { name: "Tiệm Chè Hữu Hòa", coords: [10.0343, 105.7872], type: "Hoa" },
+          { name: "Chùa Bà Thiên Hậu", coords: [10.0346, 105.7878], type: "Hoa" },
+          { name: "Quan Thánh Đế Cổ Miếu Quảng Đông", coords: [10.0348, 105.7874], type: "Hoa" }
+        ];
+      
+        let markers = [];
+      
+        locations.forEach(function(loc) {
+      
+          let icon;
+          if (loc.type === "Kinh") icon = iconKinh;
+          if (loc.type === "Khmer") icon = iconKhmer;
+          if (loc.type === "Hoa") icon = iconHoa;
+      
+          let marker = L.marker(loc.coords, { icon: icon }).addTo(map);
+      
+          marker.bindPopup(`
+            <b>${loc.name}</b><br>
+            Dân tộc: ${loc.type}<br><br>
+            <button onclick="checkIn(${loc.coords[0]}, ${loc.coords[1]})">
+              📍 Check-in tại đây
+            </button>
+          `);
+      
+          markers.push({ marker: marker, type: loc.type });
+      
+        });
+      
+        // ===== BỘ LỌC =====
+      
+        window.filterMarkers = function(type) {
+          markers.forEach(function(m) {
+            if (type === "all" || m.type === type) {
+              map.addLayer(m.marker);
+            } else {
+              map.removeLayer(m.marker);
+            }
+          });
+        };
+      
+      });
+      
+      // ===== CHECK-IN GPS =====
+      
+      function checkIn(lat, lng) {
+        if (!navigator.geolocation) {
+          alert("Trình duyệt không hỗ trợ định vị.");
+          return;
+        }
+      
+        navigator.geolocation.getCurrentPosition(function(position) {
+      
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+      
+          const distance = L.latLng(userLat, userLng).distanceTo([lat, lng]);
+      
+          if (distance < 50000) {
+            alert("🎉 Check-in thành công! Bạn đang ở trong bán kính 100m.");
+          } else {
+            alert("❌ Bạn chưa ở đủ gần địa điểm (cần dưới 100m).");
+          }
+      
+        }, function() {
+          alert("Không thể lấy vị trí của bạn.");
+        });
+      }
+      </script>
+      
+    
 {% endblock %}
