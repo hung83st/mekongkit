@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Hiệp Thiên Cung - Cần Thơ</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script> <!-- Thư viện 360° -->
     <style>
-        body {font-family: 'Be Vietnam Pro', sans-serif; margin: 0; padding: 0; background: #fff8e1; color: #333;}
-        header {background: linear-gradient(135deg, #f9a825, #ffca28); color: white; text-align: center; padding: 60px 20px;}
-        header h1 {font-size: 38px;}
-        .container {max-width: 900px; margin: auto; padding: 40px 20px;}
-        .highlight {background: #fffde7; padding: 20px; border-left: 6px solid #fbc02d; border-radius: 8px; margin: 20px 0;}
-        img {width: 100%; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
-        footer {background: #f9a825; color: white; text-align: center; padding: 15px;}
-        .btn {display: inline-block; padding: 12px 25px; margin-top: 20px; background: #f9a825; color: white; text-decoration: none; font-weight: bold; border-radius: 6px;}
-        .btn:hover {background: #f57f17;}
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff8e1;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f9a825, #ffca28);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 20px;
+            border-left: 6px solid #fbc02d;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #f9a825;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background: #f9a825;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #f57f17;
+        }
 
         /* 🔙 Nút quay lại Dashboard */
         .back-btn {
@@ -26,16 +80,135 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             z-index: 1000;
         }
+
         .back-btn:hover {
             background: #f57f17;
             transform: translateX(-3px);
         }
+        /* Phần camera 360° */
+        .viewer-360 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .viewer-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            pointer-events: none;
+            animation: fadeHint 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeHint {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Accordion story */
+        .story-btn {
+            width: 100%;
+            padding: 18px 22px;
+            border: none;
+            border-radius: 14px;
+            background: #fff8e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: background 0.3s ease;
+        }
+
+        .story-btn:hover {
+            background: #fff3cd;
+        }
+
+        .story-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .story-icon {
+            width: 42px;
+            height: 42px;
+            background: #ffe082;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+        }
+
+        .story-text h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .story-text p {
+            margin: 2px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .story-arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .story-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        /* Nội dung ẩn/hiện */
+        .story-content {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+            animation: fadeDown 0.4s ease;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <!-- 🔙 Nút quay lại Dashboard -->
@@ -45,10 +218,25 @@
         <p>Ngôi miếu cổ kính của người Hoa Quảng Đông</p>
     </header>
 
-    <div class="container">
+    <!-- 📖 CÂU CHUYỆN VĂN HÓA -->
+    <button class="story-btn" onclick="toggleStory()">
+        <div class="story-left">
+            <div class="story-icon">📖</div>
+            <div class="story-text">
+                <h2>Câu chuyện văn hóa</h2>
+                <p>Tìm hiểu lịch sử & ý nghĩa của Hiệp Thiên Cung</p>
+            </div>
+        </div>
+        <div id="storyArrow" class="story-arrow">⌄</div>
+    </button>
+
+
+    <div id="storyContent" class="story-content">
         <p>
-            <strong>Hiệp Thiên Cung</strong> là một trong những miếu thờ lớn và lâu đời tại Cần Thơ, do cộng đồng người Hoa xây dựng
-            để thờ các vị thần bảo hộ, đặc biệt là Ngọc Hoàng Thượng Đế. Công trình mang đậm dấu ấn kiến trúc Hoa với mái ngói cong,
+            <strong>Hiệp Thiên Cung</strong> là một trong những miếu thờ lớn và lâu đời tại Cần Thơ, do cộng đồng người
+            Hoa xây dựng
+            để thờ các vị thần bảo hộ, đặc biệt là Ngọc Hoàng Thượng Đế. Công trình mang đậm dấu ấn kiến trúc Hoa với
+            mái ngói cong,
             rồng phượng uốn lượn và họa tiết chạm khắc tinh tế.
         </p>
 
@@ -69,8 +257,28 @@
             dân và du khách đến chiêm bái, cầu phúc và tìm hiểu văn hóa truyền thống.
         </p>
 
+
         <img src="{{ url_for('static', filename='images/hiep-thien-cung.jpg') }}" alt="Hiệp Thiên Cung">
 
+        <h2 style="margin-top:40px;">🎥 Trải nghiệm không gian 360°</h2>
+        <p>Kéo chuột hoặc xoay điện thoại để khám phá toàn cảnh Hiệp Thiên Cung.</p>
+
+        <div class="viewer-360">
+            <a-scene embedded vr-mode-ui="enabled: true">
+                <!-- Ảnh panorama 360 -->
+                <a-sky src="{{ url_for('static', filename='images/hiep-thien-cung.jpg') }}" rotation="0 -90 0">
+                </a-sky>
+
+                <!-- Camera: chỉ xoay, không di chuyển -->
+                <a-camera look-controls="enabled: true" wasd-controls-enabled="false">
+                </a-camera>
+            </a-scene>
+
+            <!-- Overlay hướng dẫn giống Viewer360.tsx -->
+            <div class="viewer-hint">
+                🖱️ Kéo để khám phá không gian 360°
+            </div>
+        </div>
         <div class="highlight">
             <h2>🌟 Điểm nổi bật</h2>
             <ul>
@@ -84,15 +292,83 @@
                 <li>✔️ Bảo tồn nguyên vẹn kiến trúc và nghi lễ cổ xưa suốt hơn một thế kỷ</li>
                 <li>✔️ Điểm đến lý tưởng cho du khách yêu thích văn hóa, tín ngưỡng và nghệ thuật dân gian Trung Hoa
                 </li>
+
             </ul>
         </div>
 
         <p>Hiệp Thiên Cung không chỉ là một công trình tôn giáo cổ kính, mà còn là biểu tượng giao thoa văn hóa của
             người Hoa tại Cần Thơ, lưu giữ những giá trị tâm linh và nghệ thuật truyền thống qua nhiều thế hệ.</p>
-        <a href="https://www.google.com/maps/place/Hi%E1%BB%87p+Thi%C3%AAn+Cung+Th%E1%BA%A1nh+M%E1%BB%B9+%E5%8D%94%E5%A4%A9%E5%AE%AE/@10.0061703,105.7489355,17.33z/data=!4m10!1m2!2m1!1zaGnhu4dwIHRoacOqbiBjdW5n!3m6!1s0x31a089b6a840122d:0x1e32519ffbef8ec3!8m2!3d10.0068526!4d105.7534118!15sChJoaeG7h3AgdGhpw6puIGN1bmeSARBwbGFjZV9vZl93b3JzaGlwqgE7EAEyHxABIhur1FGtDweNpQL5nwP7u65b7PCOP2gYdsIZrTwyFhACIhJoaeG7h3AgdGhpw6puIGN1bmfgAQA!16s%2Fg%2F11csqg8w7h?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+
+
+        <a href="https://www.google.com/maps/place/Hi%E1%BB%87p+Thi%C3%AAn+Cung+Th%E1%BA%A1nh+M%E1%BB%B9+%E5%8D%94%E5%A4%A9%E5%AE%AE/@10.0061703,105.7489355,17.33z/data=!4m10!1m2!2m1!1zaGnhu4dwIHRoacOqbiBjdW5n!3m6!1s0x31a089b6a840122d:0x1e32519ffbef8ec3!8m2!3d10.0068526!4d105.7534118!15sChJoaeG7h3AgdGhpw6puIGN1bmeSARBwbGFjZV9vZl93b3JzaGlwqgE7EAEyHxABIhur1FGtDweNpQL5nwP7u65b7PCOP2gYdsIZrTwyFhACIhJoaeG7h3AgdGhpw6puIGN1bmfgAQA!16s%2Fg%2F11csqg8w7h?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>© 2025 Du lịch Cần Thơ - Hiệp Thiên Cung</footer>
-</body>
-</html>
 
+    <script>
+        function toggleStory() {
+            const c = document.getElementById("storyContent");
+            const isOpen = c.style.display === "block";
+
+            c.style.display = isOpen ? "none" : "block";
+
+            if (!isOpen) {
+                // ⏱ đợi accordion mở xong rồi resize A-Frame
+                setTimeout(() => {
+                    const scene = c.querySelector("a-scene");
+                    if (scene) {
+                        scene.resize();
+                    }
+                }, 200);
+            }
+        }
+
+        /* GAME */
+        let player = { x: 0, y: 0 };
+        const goal = { x: 4, y: 4 };
+        const obstacles = ["1,1", "2,1", "3,2"];
+
+        function openChallenge() {
+            document.getElementById("challengeModal").style.display = "flex";
+            player = { x: 0, y: 0 };
+            draw();
+        }
+
+        function draw() {
+            const g = document.getElementById("game");
+            g.innerHTML = "";
+            for (let y = 0; y < 5; y++) {
+                for (let x = 0; x < 5; x++) {
+                    const d = document.createElement("div");
+                    d.style.width = d.style.height = "50px";
+                    d.style.display = "flex";
+                    d.style.alignItems = d.style.justifyContent = "center";
+                    d.style.borderRadius = "8px";
+                    if (x === player.x && y === player.y) { d.textContent = "🧍"; d.style.background = "#bbdefb"; }
+                    else if (x === goal.x && y === goal.y) { d.textContent = "🎯"; d.style.background = "#c8e6c9"; }
+                    else if (obstacles.includes(`${x},${y}`)) { d.textContent = "⛔"; d.style.background = "#ffcdd2"; }
+                    else d.style.background = "#eee";
+                    g.appendChild(d);
+                }
+            }
+        }
+
+        function move(dx, dy) {
+            const nx = player.x + dx, ny = player.y + dy;
+            if (nx < 0 || ny < 0 || nx > 4 || ny > 4) return;
+            if (obstacles.includes(`${nx},${ny}`)) return;
+            player = { x: nx, y: ny };
+            draw();
+            if (nx === goal.x && ny === goal.y) {
+                setTimeout(() => {
+                    alert("🎉 Check-in thành công!");
+                    document.getElementById("challengeModal").style.display = "none";
+                    handleCheckin();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+
+</html>
