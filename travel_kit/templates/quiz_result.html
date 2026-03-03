@@ -96,8 +96,42 @@
   </div>
   {% endif %}
 
+    <!-- 🧩 MẢNH GHÉP
+    {% if collected is defined and required is defined %}
+    <div class="mt-4 p-3 rounded"
+         style="background:#e3f2fd; border:2px dashed #64b5f6;">
+  
+      <h4 style="color:#0277bd;">🧩 Tiến độ mảnh ghép</h4>
+  
+      <p>
+        Bạn đã thu thập:
+        <strong>{{ collected }}</strong> / {{ required }} mảnh
+      </p>
+  
+      <div style="font-size:28px;">
+        {% for i in range(required) %}
+          {% if i < collected %}
+            🧩
+          {% else %}
+            ⬜
+          {% endif %}
+        {% endfor %}
+      </div>
+  
+      {% if collected >= required %}
+        <p class="mt-2" style="color:#2e7d32; font-weight:bold;">
+          🎉 Bạn đã hoàn thành địa điểm Bến Ninh Kiều!
+        </p>
+      
+      {% else %}
+        <p class="mt-2" style="color:#555;">
+          Cố gắng thêm để mở khóa địa điểm tiếp theo nhé!
+        </p>
+      {% endif %}
+    </div>
+    {% endif %} -->
   <div class="mt-4">
-    <a href="{{ url_for('minigame') }}" class="btn btn-success me-2">Chơi lại 🔁</a>
+    <!-- <a href="{{ url_for('minigame') }}" class="btn btn-success me-2">Chơi lại 🔁</a> -->
     <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Quay lại Dashboard</a>
   </div>
 </div>
