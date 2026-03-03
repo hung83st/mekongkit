@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Quan Thánh Đế Cổ Miếu Quảng Đông - Cần Thơ</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script> <!-- Thư viện 360° -->
     <style>
-        body {font-family: 'Be Vietnam Pro', sans-serif; background: #fdfdfd; margin: 0; padding: 0;}
-        header {background: linear-gradient(135deg, #9c27b0, #ba68c8); color: white; text-align: center; padding: 60px 20px;}
-        .container {max-width: 900px; margin: auto; padding: 40px 20px;}
-        .highlight {background: #f3e5f5; padding: 20px; border-left: 6px solid #8e24aa; border-radius: 8px; margin: 20px 0;}
-        img {width: 100%; border-radius: 12px; margin: 20px 0;}
-        footer {background: #9c27b0; color: white; text-align: center; padding: 15px;}
-        .btn {display: inline-block; padding: 12px 25px; background: #9c27b0; color: white; border-radius: 6px; text-decoration: none; font-weight: bold;}
-        .btn:hover {background: #7b1fa2;}
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #fdfdfd;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #9c27b0, #ba68c8);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .highlight {
+            background: #f3e5f5;
+            padding: 20px;
+            border-left: 6px solid #8e24aa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #9c27b0;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #9c27b0;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #7b1fa2;
+        }
 
         /* Nút quay lại Dashboard */
         .back-btn {
@@ -28,23 +76,156 @@
             font-weight: 600;
             transition: 0.3s;
         }
+
         .back-btn:hover {
             background: #6a1b9a;
         }
+        /* Phần camera 360° */
+        .viewer-360 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .viewer-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            pointer-events: none;
+            animation: fadeHint 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeHint {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Accordion story */
+        .story-btn {
+            width: 100%;
+            padding: 18px 22px;
+            border: none;
+            border-radius: 14px;
+            background: #fff8e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: background 0.3s ease;
+        }
+
+        .story-btn:hover {
+            background: #fff3cd;
+        }
+
+        .story-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .story-icon {
+            width: 42px;
+            height: 42px;
+            background: #ffe082;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+        }
+
+        .story-text h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .story-text p {
+            margin: 2px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .story-arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .story-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        /* Nội dung ẩn/hiện */
+        .story-content {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+            animation: fadeDown 0.4s ease;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <!-- Nút quay lại Dashboard -->
         <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
-        
+
         <h1>🏯 Quan Thánh Đế Cổ Miếu Quảng Đông</h1>
         <p>Ngôi miếu uy nghi thờ Quan Vũ – vị thần chính nghĩa</p>
     </header>
 
-    <div class="container">
+
+    <!-- 📖 CÂU CHUYỆN VĂN HÓA -->
+    <button class="story-btn" onclick="toggleStory()">
+        <div class="story-left">
+            <div class="story-icon">📖</div>
+            <div class="story-text">
+                <h2>Câu chuyện văn hóa</h2>
+                <p>Tìm hiểu lịch sử & ý nghĩa của Quan Thánh Đế Cổ Miếu Quảng Đông</p>
+            </div>
+        </div>
+        <div id="storyArrow" class="story-arrow">⌄</div>
+    </button>
+
+    <div id="storyContent" class="story-content">
         <p>
-            <strong>Quan Thánh Đế Cổ Miếu Quảng Đông</strong> là nơi thờ Quan Vũ, vị thần biểu trưng cho lòng trung nghĩa và chính trực,
+            <strong>Quan Thánh Đế Cổ Miếu Quảng Đông</strong> là nơi thờ Quan Vũ, vị thần biểu trưng cho lòng trung
+            nghĩa và chính trực,
             được cộng đồng người Hoa Quảng Đông tại Cần Thơ xây dựng cách đây hơn một thế kỷ.
         </p>
 
@@ -101,8 +282,30 @@
             phú thêm bản sắc văn hóa của thành phố Cần Thơ.
         </p>
 
-        <img src="{{ url_for('static', filename='images/quan-thanh-de-co-mieu-quang-dong.jpg') }}" alt="Quan Thánh Đế Cổ Miếu Quảng Đông">
 
+
+        <img src="{{ url_for('static', filename='images/quan-thanh-de-co-mieu-quang-dong.jpg') }}"
+            alt="Quan Thánh Đế Cổ Miếu Quảng Đông">
+
+            <h2 style="margin-top:40px;">🎥 Trải nghiệm không gian 360°</h2>
+            <p>Kéo chuột hoặc xoay điện thoại để khám phá toàn cảnh Quan Thánh Đế Cổ Miếu Quảng Đông.</p>
+    
+            <div class="viewer-360">
+                <a-scene embedded vr-mode-ui="enabled: true">
+                    <!-- Ảnh panorama 360 -->
+                    <a-sky src="{{ url_for('static', filename='images/quan-thanh-de-co-mieu-quang-dong.jpg') }}" rotation="0 -90 0">
+                    </a-sky>
+    
+                    <!-- Camera: chỉ xoay, không di chuyển -->
+                    <a-camera look-controls="enabled: true" wasd-controls-enabled="false">
+                    </a-camera>
+                </a-scene>
+    
+                <!-- Overlay hướng dẫn giống Viewer360.tsx -->
+                <div class="viewer-hint">
+                    🖱️ Kéo để khám phá không gian 360°
+                </div>
+            </div>
         <div class="highlight">
             <h2>💎 Điểm nổi bật</h2>
             <ul>
@@ -115,6 +318,7 @@
                     đông đảo phật tử</li>
                 <li>✔️ Gìn giữ hơn một thế kỷ lịch sử, phản ánh sự giao thoa văn hóa Việt – Hoa</li>
                 <li>✔️ Điểm đến du lịch văn hóa – tâm linh hấp dẫn tại Cần Thơ</li>
+
             </ul>
         </div>
 
@@ -122,10 +326,76 @@
             tượng sống động của văn hóa, lịch sử và tín ngưỡng tại Cần Thơ. Ghé thăm miếu, du khách sẽ được chiêm ngưỡng
             kiến trúc tinh xảo, trải nghiệm các lễ hội truyền thống và cảm nhận rõ nét sự giao hòa giữa giá trị văn hóa
             xưa và nhịp sống hiện đại của thành phố.</p>
-        <a href="https://www.google.com/maps/place/Quan+Th%C3%A1nh+%C4%90%E1%BA%BF+C%E1%BB%95+Mi%E1%BA%BFu+Qu%E1%BA%A3ng+%C4%90%C3%B4ng+%E5%BB%A3%E8%82%87%E6%AD%A6%E5%B8%9D%E5%8F%A4%E5%BB%9F+(+Ch%C3%B9a+%C3%94ng+B%E1%BB%95n+%C3%94+M%C3%B4n+)/@10.116915,105.6188563,17z/data=!3m1!4b1!4m6!3m5!1s0x31a084ef4374894f:0xffac3cc513ba784a!8m2!3d10.116915!4d105.6237272!16s%2Fg%2F1pzq3vyd1?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+
+        <a href="https://www.google.com/maps/place/Quan+Th%C3%A1nh+%C4%90%E1%BA%BF+C%E1%BB%95+Mi%E1%BA%BFu+Qu%E1%BA%A3ng+%C4%90%C3%B4ng+%E5%BB%A3%E8%82%87%E6%AD%A6%E5%B8%9D%E5%8F%A4%E5%BB%9F+(+Ch%C3%B9a+%C3%94ng+B%E1%BB%95n+%C3%94+M%C3%B4n+)/@10.116915,105.6188563,17z/data=!3m1!4b1!4m6!3m5!1s0x31a084ef4374894f:0xffac3cc513ba784a!8m2!3d10.116915!4d105.6237272!16s%2Fg%2F1pzq3vyd1?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>© 2025 Du lịch Cần Thơ - Quan Thánh Đế Cổ Miếu Quảng Đông</footer>
-</body>
-</html>
 
+    <script>
+        function toggleStory() {
+            const c = document.getElementById("storyContent");
+            const isOpen = c.style.display === "block";
+
+            c.style.display = isOpen ? "none" : "block";
+
+            if (!isOpen) {
+                // ⏱ đợi accordion mở xong rồi resize A-Frame
+                setTimeout(() => {
+                    const scene = c.querySelector("a-scene");
+                    if (scene) {
+                        scene.resize();
+                    }
+                }, 200);
+            }
+        }
+
+        /* GAME */
+        let player = { x: 0, y: 0 };
+        const goal = { x: 4, y: 4 };
+        const obstacles = ["1,1", "2,1", "3,2"];
+
+        function openChallenge() {
+            document.getElementById("challengeModal").style.display = "flex";
+            player = { x: 0, y: 0 };
+            draw();
+        }
+
+        function draw() {
+            const g = document.getElementById("game");
+            g.innerHTML = "";
+            for (let y = 0; y < 5; y++) {
+                for (let x = 0; x < 5; x++) {
+                    const d = document.createElement("div");
+                    d.style.width = d.style.height = "50px";
+                    d.style.display = "flex";
+                    d.style.alignItems = d.style.justifyContent = "center";
+                    d.style.borderRadius = "8px";
+                    if (x === player.x && y === player.y) { d.textContent = "🧍"; d.style.background = "#bbdefb"; }
+                    else if (x === goal.x && y === goal.y) { d.textContent = "🎯"; d.style.background = "#c8e6c9"; }
+                    else if (obstacles.includes(`${x},${y}`)) { d.textContent = "⛔"; d.style.background = "#ffcdd2"; }
+                    else d.style.background = "#eee";
+                    g.appendChild(d);
+                }
+            }
+        }
+
+        function move(dx, dy) {
+            const nx = player.x + dx, ny = player.y + dy;
+            if (nx < 0 || ny < 0 || nx > 4 || ny > 4) return;
+            if (obstacles.includes(`${nx},${ny}`)) return;
+            player = { x: nx, y: ny };
+            draw();
+            if (nx === goal.x && ny === goal.y) {
+                setTimeout(() => {
+                    alert("🎉 Check-in thành công!");
+                    document.getElementById("challengeModal").style.display = "none";
+                    handleCheckin();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+
+</html>
