@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Travel Kit{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <style>
         /* ====== Header và logo ====== */
         header {
@@ -167,7 +170,7 @@
             <a href="{{ url_for('login') }}">🔑 Đăng nhập</a> |
             <a href="{{ url_for('register') }}">📝 Đăng ký</a> |
             <a href="{{ url_for('guide') }}">📘 Hướng dẫn sử dụng</a>
-            <!-- <a href="{{ url_for('rewards') }}">🎁 Phần quà</a> -->
+            <a href="{{ url_for('rewards') }}">🎁 Phần quà</a>
         </nav>
         {% endif %}
         <hr>
