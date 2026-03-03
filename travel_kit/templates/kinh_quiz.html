@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Mini-game {{ location_key }}{% endblock %}
+
+{% block content %}
+<style>
+  .quiz-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #ff9800;
+    margin-bottom: 20px;
+  }
+
+  .question-box {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fffaf0;
+    border-radius: 14px;
+  }
+
+  .question-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .options label {
+    display: block;
+    margin: 6px 0;
+    cursor: pointer;
+  }
+
+  button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff9800, #ffb74d);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="quiz-container">
+  <h2>🎯 Mini-game: {{ location_key.replace('_', ' ').title() }}</h2>
+  <p style="text-align:center">Trả lời đúng <strong>ít nhất 6 / 10 câu</strong> để nhận 1 mảnh ghép 🧩</p>
+
+  <form method="POST" action="{{ url_for('submit_kinh_quiz') }}">
+    {% for q in questions %}
+      {% set q_index = loop.index0 %}
+      <div class="question-box">
+        <div class="question-title">
+          Câu {{ loop.index }}: {{ q.question }}
+        </div>
+  
+        <div class="options">
+          {% for opt in q.options %}
+            <label>
+              <input type="radio" name="q{{ q_index }}" value="{{ opt }}" required>
+              {{ opt }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  
+    <button type="submit">🚀 Nộp bài</button>
+  </form>
+  
+</div>
+{% endblock %}
