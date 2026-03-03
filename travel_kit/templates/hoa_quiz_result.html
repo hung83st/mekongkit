@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}Kết quả mini-game Hoa{% endblock %}
+
+{% block content %}
+<style>
+  .result-box {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    text-align: center;
+  }
+
+  .score {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .success {
+    color: #4caf50;
+    font-weight: 700;
+  }
+
+  .fail {
+    color: #f44336;
+    font-weight: 700;
+  }
+
+  .pieces {
+    font-size: 18px;
+    margin: 15px 0;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 26px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #d32f2f, #f44336);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+    /* Xử lý mảnh ghép */
+    .puzzle-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  }
+
+  .piece {
+    width: 260px;
+    height: 180px;
+    border-radius: 12px;
+    background-size: 520px 180px;  /* chia 2 mảnh ngang */
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    transition: 0.6s ease;
+  }
+
+  /* mảnh trái */
+  .piece.left {
+    background-position: left center;
+  }
+
+  /* mảnh phải */
+  .piece.right {
+    background-position: right center;
+  }
+
+  .unlocked {
+    opacity: 1;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+</style>
+
+<div class="result-box">
+  <h2>📊 Kết quả mini-game Hoa</h2>
+
+  <div class="score">
+    Bạn trả lời đúng <strong>{{ correct }}/10</strong> câu
+  </div>
+
+  {% if Hoa_gained_piece %}
+    <p class="success">🎉 Chúc mừng! Bạn nhận được 1 mảnh ghép 🧩</p>
+  {% else %}
+    <p class="fail">😢 Chưa đủ 6 câu đúng, hãy thử lại nhé!</p>
+  {% endif %}
+
+  <div class="pieces">
+    🧩 Mảnh ghép hiện tại: <strong>{{ pieces }}/2</strong>
+
+    <div class="puzzle-container">
+
+        <!-- Mảnh 1 -->
+        <div class="piece left 
+            {% if pieces >= 1 %} unlocked {% endif %}"
+            style="background-image: url('{{ url_for('static', filename='images/' + location_key + '.jpg') }}');">
+        </div>
+      
+        <!-- Mảnh 2 -->
+        <div class="piece right 
+            {% if pieces >= 2 %} unlocked {% endif %}"
+            style="background-image: url('{{ url_for('static', filename='images/' + location_key + '.jpg') }}');">
+        </div>
+      
+      </div>
+  </div>
+
+  {% if completed %}
+    <p class="success">✅ Địa điểm này đã hoàn thành!</p>
+
+    {% if not Hoa_next_location %}
+      <p>🏆 Bạn đã hoàn thành toàn bộ lộ trình dân tộc Hoa!</p>
+    {% else %}
+      <p>🔓 Địa điểm tiếp theo đã được mở khóa trong Dashboard</p>
+    {% endif %}
+
+  {% else %}
+    <a href="{{ url_for('hoa_route_node', location_key=session['hoa_quiz_location']) }}" class="btn">
+      🔄 Làm lại mini-game
+    </a>
+  {% endif %}
+
+  <br><br>
+  <a href="{{ url_for('dashboard') }}">⬅️ Quay về Dashboard</a>
+</div>
+
+{% endblock %}
