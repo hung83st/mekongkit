@@ -1,18 +1,67 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Tiệm chè Hữu Hòa - Cần Thơ</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script> <!-- Thư viện 360° -->
     <style>
-        body {font-family: 'Be Vietnam Pro', sans-serif; background: #fff; margin: 0; padding: 0;}
-        header {background: linear-gradient(135deg, #8bc34a, #aed581); color: white; text-align: center; padding: 60px 20px;}
-        .container {max-width: 900px; margin: auto; padding: 40px 20px;}
-        .highlight {background: #f1f8e9; padding: 20px; border-left: 6px solid #7cb342; border-radius: 8px; margin: 20px 0;}
-        img {width: 100%; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
-        footer {background: #8bc34a; color: white; text-align: center; padding: 15px;}
-        .btn {display: inline-block; padding: 12px 25px; background: #8bc34a; color: white; text-decoration: none; font-weight: bold; border-radius: 6px;}
-        .btn:hover {background: #689f38;}
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8bc34a, #aed581);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .highlight {
+            background: #f1f8e9;
+            padding: 20px;
+            border-left: 6px solid #7cb342;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #8bc34a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #8bc34a;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #689f38;
+        }
 
         /* Nút quay lại Dashboard */
         .back-btn {
@@ -28,23 +77,156 @@
             font-weight: 600;
             transition: 0.3s;
         }
+
         .back-btn:hover {
             background: #558b2f;
         }
+
+        /* Phần camera 360° */
+        .viewer-360 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .viewer-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            pointer-events: none;
+            animation: fadeHint 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeHint {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Accordion story */
+        .story-btn {
+            width: 100%;
+            padding: 18px 22px;
+            border: none;
+            border-radius: 14px;
+            background: #fff8e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: background 0.3s ease;
+        }
+
+        .story-btn:hover {
+            background: #fff3cd;
+        }
+
+        .story-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .story-icon {
+            width: 42px;
+            height: 42px;
+            background: #ffe082;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+        }
+
+        .story-text h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .story-text p {
+            margin: 2px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .story-arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .story-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        /* Nội dung ẩn/hiện */
+        .story-content {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+            animation: fadeDown 0.4s ease;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <!-- Nút quay lại Dashboard -->
         <a href="{{ url_for('dashboard') }}" class="back-btn">⬅️ Quay lại Dashboard</a>
-        
+
         <h1>🍧 Tiệm chè Hữu Hòa</h1>
         <p>Ngọt ngào hương vị người Hoa giữa lòng Cần Thơ</p>
     </header>
 
-    <div class="container">
+    <!-- 📖 CÂU CHUYỆN VĂN HÓA -->
+    <button class="story-btn" onclick="toggleStory()">
+        <div class="story-left">
+            <div class="story-icon">📖</div>
+            <div class="story-text">
+                <h2>Câu chuyện văn hóa</h2>
+                <p>Tìm hiểu lịch sử & ý nghĩa của Tiệm Chè Hữu Hòa</p>
+            </div>
+        </div>
+        <div id="storyArrow" class="story-arrow">⌄</div>
+    </button>
+
+    <div id="storyContent" class="story-content">
         <p>
-            <strong>Tiệm chè Hữu Hòa</strong> là địa chỉ quen thuộc của người dân và du khách khi muốn thưởng thức các món chè truyền thống
+            <strong>Tiệm chè Hữu Hòa</strong> là địa chỉ quen thuộc của người dân và du khách khi muốn thưởng thức các
+            món chè truyền thống
             của người Hoa như chè hạt sen, sâm bổ lượng, chè đậu đỏ, hoặc trà thảo mộc thanh mát.
         </p>
 
@@ -63,8 +245,28 @@
             sống chậm rãi, bình dị của người dân miền Tây.
         </p>
 
+
         <img src="{{ url_for('static', filename='images/tiem-che-huu-hoa.jpg') }}" alt="Tiệm chè Hữu Hòa">
 
+        <h2 style="margin-top:40px;">🎥 Trải nghiệm không gian 360°</h2>
+            <p>Kéo chuột hoặc xoay điện thoại để khám phá toàn cảnh Tiệm chè Hữu Hòa.</p>
+    
+            <div class="viewer-360">
+                <a-scene embedded vr-mode-ui="enabled: true">
+                    <!-- Ảnh panorama 360 -->
+                    <a-sky src="{{ url_for('static', filename='images/tiem-che-huu-hoa.jpg') }}" rotation="0 -90 0">
+                    </a-sky>
+    
+                    <!-- Camera: chỉ xoay, không di chuyển -->
+                    <a-camera look-controls="enabled: true" wasd-controls-enabled="false">
+                    </a-camera>
+                </a-scene>
+    
+                <!-- Overlay hướng dẫn giống Viewer360.tsx -->
+                <div class="viewer-hint">
+                    🖱️ Kéo để khám phá không gian 360°
+                </div>
+            </div>
         <div class="highlight">
             <h2>🍵 Điểm nổi bật</h2>
             <ul>
@@ -78,16 +280,82 @@
                 <li>✔️ Không gian ấm cúng, gợi nhớ nét đẹp hoài cổ giữa lòng thành phố hiện đại</li>
                 <li>✔️ Nơi lưu giữ hương vị truyền thống, phản ánh văn hóa ẩm thực tinh tế của cộng đồng người Hoa miền
                     Tây</li>
+
             </ul>
         </div>
 
         <p>Tiệm chè Hữu Hòa không chỉ là nơi thưởng thức món ngọt thanh mát, mà còn là biểu tượng của nét giao hòa văn
             hóa Việt – Hoa giữa lòng Cần Thơ, lưu giữ hương vị truyền thống qua từng chén chè giản dị mà đậm đà.</p>
 
-        <a href="https://www.google.com/maps/place/Ti%E1%BB%87m+Ch%C3%A8+H%E1%BB%AFu+H%C3%B2a/@10.0306567,105.7839059,17z/data=!3m1!4b1!4m6!3m5!1s0x31a0629f3e283def:0x849e6f2b0eed4726!8m2!3d10.0306567!4d105.7864808!16s%2Fg%2F1tdl86ct?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
+        <a href="https://www.google.com/maps/place/Ti%E1%BB%87m+Ch%C3%A8+H%E1%BB%AFu+H%C3%B2a/@10.0306567,105.7839059,17z/data=!3m1!4b1!4m6!3m5!1s0x31a0629f3e283def:0x849e6f2b0eed4726!8m2!3d10.0306567!4d105.7864808!16s%2Fg%2F1tdl86ct?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" class="btn">📍 Xem vị trí trên Google Maps</a>
     </div>
 
     <footer>© 2025 Du lịch Cần Thơ - Tiệm chè Hữu Hòa</footer>
-</body>
-</html>
 
+    <script>
+        function toggleStory() {
+            const c = document.getElementById("storyContent");
+            const isOpen = c.style.display === "block";
+
+            c.style.display = isOpen ? "none" : "block";
+
+            if (!isOpen) {
+                // ⏱ đợi accordion mở xong rồi resize A-Frame
+                setTimeout(() => {
+                    const scene = c.querySelector("a-scene");
+                    if (scene) {
+                        scene.resize();
+                    }
+                }, 200);
+            }
+        }
+
+        /* GAME */
+        let player = { x: 0, y: 0 };
+        const goal = { x: 4, y: 4 };
+        const obstacles = ["1,1", "2,1", "3,2"];
+
+        function openChallenge() {
+            document.getElementById("challengeModal").style.display = "flex";
+            player = { x: 0, y: 0 };
+            draw();
+        }
+
+        function draw() {
+            const g = document.getElementById("game");
+            g.innerHTML = "";
+            for (let y = 0; y < 5; y++) {
+                for (let x = 0; x < 5; x++) {
+                    const d = document.createElement("div");
+                    d.style.width = d.style.height = "50px";
+                    d.style.display = "flex";
+                    d.style.alignItems = d.style.justifyContent = "center";
+                    d.style.borderRadius = "8px";
+                    if (x === player.x && y === player.y) { d.textContent = "🧍"; d.style.background = "#bbdefb"; }
+                    else if (x === goal.x && y === goal.y) { d.textContent = "🎯"; d.style.background = "#c8e6c9"; }
+                    else if (obstacles.includes(`${x},${y}`)) { d.textContent = "⛔"; d.style.background = "#ffcdd2"; }
+                    else d.style.background = "#eee";
+                    g.appendChild(d);
+                }
+            }
+        }
+
+        function move(dx, dy) {
+            const nx = player.x + dx, ny = player.y + dy;
+            if (nx < 0 || ny < 0 || nx > 4 || ny > 4) return;
+            if (obstacles.includes(`${nx},${ny}`)) return;
+            player = { x: nx, y: ny };
+            draw();
+            if (nx === goal.x && ny === goal.y) {
+                setTimeout(() => {
+                    alert("🎉 Check-in thành công!");
+                    document.getElementById("challengeModal").style.display = "none";
+                    handleCheckin();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+
+</html>
