@@ -115,3 +115,255 @@ form input, form button {
     font-weight: bold;
     margin-bottom: 15px;
 }
+
+h1 {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, #ffecb3, #ffd180, #ffab40, #ffd180, #ffecb3);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s ease-in-out infinite;
+    font-weight: 800;
+    text-shadow: 0 0 15px rgba(255, 200, 100, 0.4); /* ánh sáng mềm */
+}
+
+@keyframes shine {
+    0% { background-position: 0% 50%; opacity: 0.9; }
+    25% { background-position: 50% 50%; opacity: 1; }
+    50% { background-position: 100% 50%; opacity: 0.95; }
+    75% { background-position: 50% 50%; opacity: 1; }
+    100% { background-position: 0% 50%; opacity: 0.9; }
+}
+
+body {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+main, header, footer {
+    animation: floatUp 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes floatUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #ffb347, 0 0 20px #ffcc33; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #ff8c00, 0 0 30px #ffd700; }
+}
+
+/* ===== PAGE ===== */
+.leaderboard-page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* ===== HERO CARD ===== */
+  .leaderboard-hero {
+    background: linear-gradient(135deg,#7c3aed,#6366f1);
+    color: white;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+  
+  .hero-rank {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .hero-points {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  /* ===== TOP 3 ===== */
+  .top3-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .top-card {
+    width: 180px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+  }
+  
+  .top-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .place-1 {
+    background: linear-gradient(135deg,#facc15,#f59e0b);
+  }
+  
+  .place-2 {
+    background: #d1d5db;
+  }
+  
+  .place-3 {
+    background: #fdba74;
+  }
+  
+  .top-rank {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* ===== LIST ===== */
+/* ============================= */
+/* 🔥 LEADERBOARD LIST PREMIUM */
+/* ============================= */
+
+.leaderboard-list {
+    background: linear-gradient(180deg,#ffffff,#f8fafc);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Hiệu ứng ánh sáng nền */
+  .leaderboard-list::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,rgba(124,58,237,0.08) 0%,transparent 70%);
+    animation: rotateBg 20s linear infinite;
+  }
+  
+  @keyframes rotateBg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Row */
+  .leaderboard-row {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    margin-bottom: 12px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    animation: fadeSlide 0.6s ease forwards;
+    opacity: 0;
+  }
+  
+  /* Animation xuất hiện */
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .leaderboard-row:nth-child(1) { animation-delay: 0.1s; }
+  .leaderboard-row:nth-child(2) { animation-delay: 0.2s; }
+  .leaderboard-row:nth-child(3) { animation-delay: 0.3s; }
+  .leaderboard-row:nth-child(4) { animation-delay: 0.4s; }
+  .leaderboard-row:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Hover */
+  .leaderboard-row:hover {
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+  
+  /* Rank style */
+  .row-rank {
+    font-weight: bold;
+    font-size: 18px;
+    width: 60px;
+  }
+  
+  /* Username */
+  .row-name {
+    flex: 1;
+    font-weight: 500;
+  }
+  
+  /* Points */
+  .row-points {
+    font-weight: bold;
+    color: #7c3aed;
+  }
+  
+  /* 🥇🥈🥉 Top 3 trong list */
+  .leaderboard-row:nth-child(1) {
+    background: linear-gradient(90deg,#facc15,#fef3c7);
+  }
+  
+  .leaderboard-row:nth-child(2) {
+    background: linear-gradient(90deg,#d1d5db,#f3f4f6);
+  }
+  
+  .leaderboard-row:nth-child(3) {
+    background: linear-gradient(90deg,#fdba74,#ffedd5);
+  }
+  
+  /* 🌟 User hiện tại */
+  .active-user {
+    border: 2px solid #7c3aed;
+    background: #f3e8ff !important;
+    box-shadow: 0 0 15px rgba(124,58,237,0.4);
+  }
+
+  /* ============================= */
+/* 🔙 NÚT QUAY LẠI DASHBOARD */
+/* ============================= */
+
+.back-btn {
+    position: fixed;
+    top: 25px;
+    left: 30px;
+    background: linear-gradient(135deg,#1565c0,#1e88e5);
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+  
+  .back-btn:hover {
+    background: linear-gradient(135deg,#0d47a1,#1565c0);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  }
