@@ -446,6 +446,146 @@
   transition: 0.2s;
 } */
 
+/* ===== Account Table Styling ===== */
+
+.account-title {
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+.account-table {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.account-table thead {
+    background: linear-gradient(90deg, #2563eb, #1e40af);
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.account-table th,
+.account-table td {
+    padding: 14px 16px;
+    text-align: center;
+}
+
+.account-table tbody tr {
+    transition: all 0.25s ease;
+}
+
+.account-table tbody tr:nth-child(even) {
+    background-color: #f3f4f6;
+}
+
+.account-table tbody tr:hover {
+    background-color: #dbeafe;
+    transform: scale(1.01);
+}
+
+.account-table td {
+    font-weight: 500;
+    color: #374151;
+}
+
+.account-table {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.visit-card {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+}
+.visit-number {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* ===== Animated Visit Card ===== */
+
+.stat-card.purple {
+    position: relative;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover nâng lên */
+.stat-card.purple:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(124, 58, 237, 0.6);
+}
+
+/* Hiệu ứng ánh sáng chạy ngang */
+.stat-card.purple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* Icon */
+.stat-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Icon lơ lửng */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Số lớn */
+.stat-value {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 10px 0;
+    animation: pulse 2s infinite;
+}
+
+/* Hiệu ứng đập nhẹ */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+    100% { transform: scale(1); }
+}
+
+/* Label */
+.stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
 
 </style>
 
@@ -1153,42 +1293,91 @@
       
       // ===== CHECK-IN GPS =====
       
+      // function checkIn(lat, lng) {
+      //   if (!navigator.geolocation) {
+      //     alert("Trình duyệt không hỗ trợ định vị.");
+      //     return;
+      //   }
+      
+      //   navigator.geolocation.getCurrentPosition(function(position) {
+      
+      //     const userLat = position.coords.latitude;
+      //     const userLng = position.coords.longitude;
+      
+      //     const distance = L.latLng(userLat, userLng).distanceTo([lat, lng]);
+      
+      //     if (distance < 50000) {
+      //       alert("🎉 Check-in thành công! Bạn đang ở trong bán kính 100m.");
+      //     } else {
+      //       alert("❌ Bạn chưa ở đủ gần địa điểm (cần dưới 100m).");
+      //     }
+      
+      //   }, function() {
+      //     alert("Không thể lấy vị trí của bạn.");
+      //   });
+      // }
+
       function checkIn(lat, lng) {
         if (!navigator.geolocation) {
           alert("Trình duyệt không hỗ trợ định vị.");
           return;
         }
-      
+
         navigator.geolocation.getCurrentPosition(function(position) {
-      
+
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
-      
+
           const distance = L.latLng(userLat, userLng).distanceTo([lat, lng]);
-      
+
           // Làm tròn khoảng cách
           const distanceMeters = Math.round(distance);
           const distanceKm = (distance / 1000).toFixed(2);
-      
+
           if (distance <= 100) {
             alert(`🎉 Check-in thành công!
-            
+              
       Bạn đang cách địa điểm khoảng ${distanceMeters} mét.`);
           } else {
             alert(`❌ Bạn chưa ở đủ gần địa điểm.
-      
+
       📏 Khoảng cách hiện tại:
       ${distanceMeters} mét (~${distanceKm} km)
-      
+
       👉 Cần ở trong bán kính 100 mét để check-in.`);
           }
-      
+
         }, function(error) {
           alert("Không thể lấy vị trí của bạn.");
           console.error(error);
         });
       }
       </script>
-      
-    
+
+<div class="stat-card purple">
+  <div class="stat-icon">👀</div>
+  <div class="stat-value">{{ total_visits }}</div>
+  <div class="stat-label">Lượt truy cập</div>
+</div>
+
+<!-- <h4 class="account-title">👥 Danh sách tài khoản</h4>
+
+<table class="table account-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>👤 {{ user.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table> -->
+
+
 {% endblock %}
