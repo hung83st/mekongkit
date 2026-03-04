@@ -1166,14 +1166,26 @@
       
           const distance = L.latLng(userLat, userLng).distanceTo([lat, lng]);
       
-          if (distance < 50000) {
-            alert("🎉 Check-in thành công! Bạn đang ở trong bán kính 100m.");
+          // Làm tròn khoảng cách
+          const distanceMeters = Math.round(distance);
+          const distanceKm = (distance / 1000).toFixed(2);
+      
+          if (distance <= 100) {
+            alert(`🎉 Check-in thành công!
+            
+      Bạn đang cách địa điểm khoảng ${distanceMeters} mét.`);
           } else {
-            alert("❌ Bạn chưa ở đủ gần địa điểm (cần dưới 100m).");
+            alert(`❌ Bạn chưa ở đủ gần địa điểm.
+      
+      📏 Khoảng cách hiện tại:
+      ${distanceMeters} mét (~${distanceKm} km)
+      
+      👉 Cần ở trong bán kính 100 mét để check-in.`);
           }
       
-        }, function() {
+        }, function(error) {
           alert("Không thể lấy vị trí của bạn.");
+          console.error(error);
         });
       }
       </script>
