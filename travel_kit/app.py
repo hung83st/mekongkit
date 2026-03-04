@@ -76,7 +76,9 @@ class HoaRouteProgress(db.Model):
         db.UniqueConstraint('user_id', 'location_key'),
     )
 
-
+class SiteStats(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    total_visits = db.Column(db.Integer, default=0)
 
 KINH_ROUTE_ORDER = [
     "ben-ninh-kieu",
@@ -2380,6 +2382,10 @@ def submit_hoa_quiz():
 with app.app_context():
     db.create_all()
 
+    
+    if not SiteStats.query.first():
+        db.session.add(SiteStats(total_visits=0))
+        db.session.commit()
 
 
 
@@ -2413,6 +2419,12 @@ def login():
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password_hash, password):
+                    # Tăng lượt truy cập
+            stats = SiteStats.query.first()
+            if stats:
+                stats.total_visits += 1
+                db.session.commit()
+
             session['user_id'] = user.id
 
             # 🔥 CẬP NHẬT STREAK KHI ĐĂNG NHẬP
@@ -2496,6 +2508,7 @@ def dashboard():
         user_id=user.id,
         is_completed=False
     ).count() if 'Quest' in globals() else 0
+
         
      # 🧭 TIẾN TRÌNH LỘ TRÌNH DÂN TỘC KINH 
     # progress = {
@@ -2512,8 +2525,13 @@ def dashboard():
     # 🧭 TIẾN TRÌNH HOA
     hoa_records = HoaRouteProgress.query.filter_by(user_id=user.id).all()
     hoa_progress = {r.location_key: r for r in hoa_records}
+
+    stats = SiteStats.query.first()
+    total_visits = stats.total_visits if stats else 0
+
+    users = User.query.all() 
     return render_template('dashboard.html', user=user, checked_in_count=checked_in_count, achievements=achievements, active_quests=active_quests,
-    progress=progress, khmer_progress=khmer_progress, hoa_progress=hoa_progress)
+    progress=progress, khmer_progress=khmer_progress, hoa_progress=hoa_progress, total_visits=total_visits, users=users)
 
 # def update_streak(user):
 #     today = date.today()
@@ -4788,6 +4806,8 @@ def profile():
 @app.route("/rewards")
 def rewards():
     return render_template("rewards.html")
+
+
 
 # --- Chạy app ---
 if __name__ == '__main__':
