@@ -2485,7 +2485,31 @@ def reset_password():
 
     return render_template('reset_password.html')
 
+@app.route('/leaderboard')
+def leaderboard():
+    users = User.query.order_by(User.points.desc()).all()
+    total_users = len(users)
 
+    current_user = None
+    rank = None
+
+    if 'user_id' in session:
+        for index, u in enumerate(users):
+            if u.id == session['user_id']:
+                current_user = u
+                rank = index + 1
+                break
+
+    top_percent = int((rank / total_users) * 100) if rank else 0
+
+    return render_template(
+        'leaderboard.html',
+        users=users,
+        total_users=total_users,
+        current_user=current_user,
+        rank=rank,
+        top_percent=top_percent
+    )
 
 @app.route('/dashboard')
 def dashboard():
@@ -2530,8 +2554,30 @@ def dashboard():
     total_visits = stats.total_visits if stats else 0
 
     users = User.query.all() 
+
+        # 📊 TÍNH THỨ HẠNG
+    all_users = User.query.order_by(User.points.desc()).all()
+
+    rank = 0
+    previous_points = None
+    current_rank = 0
+
+    for index, u in enumerate(all_users):
+        if u.points != previous_points:
+            current_rank = index + 1
+        if u.id == user.id:
+            rank = current_rank
+            break
+        previous_points = u.points
+
+    # Người phía trên
+    points_to_next = 0
+    if rank > 1:
+        user_above = all_users[rank - 2]  # vì index bắt đầu từ 0
+        points_to_next = user_above.points - user.points
     return render_template('dashboard.html', user=user, checked_in_count=checked_in_count, achievements=achievements, active_quests=active_quests,
-    progress=progress, khmer_progress=khmer_progress, hoa_progress=hoa_progress, total_visits=total_visits, users=users)
+    progress=progress, khmer_progress=khmer_progress, hoa_progress=hoa_progress, total_visits=total_visits, users=users, rank=rank,
+    points_to_next=points_to_next)
 
 # def update_streak(user):
 #     today = date.today()
@@ -4806,6 +4852,7 @@ def profile():
 @app.route("/rewards")
 def rewards():
     return render_template("rewards.html")
+
 
 
 
