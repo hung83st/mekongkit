@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Bảng xếp hạng{% endblock %}
+
+{% block content %}
+<div class="leaderboard-page">
+
+    <!-- 🔙 Nút quay lại Dashboard -->
+    <a href="{{ url_for('dashboard') }}" class="back-btn">
+        ⬅️ Quay lại Dashboard
+    </a>
+    <!-- 🔥 CARD THÔNG TIN CỦA BẠN -->
+    {% if current_user %}
+    <div class="leaderboard-hero">
+        <div class="hero-left">
+            <div class="hero-rank">#{{ rank }} / {{ total_users }}</div>
+            <div class="hero-level">
+                🏆 {{ current_user.username }}
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-points">
+                {{ current_user.points }}
+            </div>
+            <small>Tổng điểm</small>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 🥇 TOP 3 -->
+    <div class="top3-section">
+        {% for user in users[:3] %}
+        <div class="top-card place-{{ loop.index }}">
+            <div class="top-avatar">
+                {% if loop.index == 1 %} 👑 {% endif %}
+            </div>
+            <div class="top-name">{{ user.username }}</div>
+            <div class="top-points">{{ user.points }} điểm</div>
+            <div class="top-rank">{{ loop.index }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 📋 DANH SÁCH CÒN LẠI -->
+    <div class="leaderboard-list">
+        {% for user in users %}
+        <div class="leaderboard-row {% if current_user and user.id == current_user.id %}active-user{% endif %}">
+            <div class="row-rank">#{{ loop.index }}</div>
+            <div class="row-name">{{ user.username }}</div>
+            <div class="row-points">{{ user.points }} điểm</div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
