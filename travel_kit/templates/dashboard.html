@@ -587,11 +587,124 @@
     letter-spacing: 1px;
 }
 
+/* ============================= */
+/* 🎖 RANKING CARD */
+/* ============================= */
+
+.ranking-card {
+  background: linear-gradient(135deg, #f8f9ff, #eef2ff);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  animation: fadeInUp 0.6s ease;
+}
+
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.ranking-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5b21b6;
+}
+
+.ranking-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: #7c3aed;
+  transition: 0.3s;
+}
+
+.ranking-link:hover {
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+/* Nội dung */
+.ranking-content {
+  text-align: center;
+}
+
+.ranking-circle {
+  width: 110px;
+  height: 110px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  animation: pulse 2s infinite;
+}
+
+.ranking-text {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #374151;
+}
+
+.ranking-text small {
+  color: #6b7280;
+}
+
+/* Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 </style>
 
 <div class="dashboard-container">
   <h2> Dashboard của bạn</h2>
 
+  <!-- 🔥 XẾP HẠNG CỦA BẠN -->
+<div class="ranking-card">
+  <div class="ranking-header">
+    <div class="ranking-title">✨ Xếp hạng của bạn</div>
+    <a href="{{ url_for('leaderboard') }}" class="ranking-link">
+      Xem bảng xếp hạng
+    </a>
+  </div>
+
+  <div class="ranking-content">
+    <div class="ranking-circle">
+      #{{ rank }}
+    </div>
+
+    <div class="ranking-text">
+      <p>Bạn đang ở vị trí <strong>#{{ rank }}</strong> trên bảng xếp hạng</p>
+
+      {% if rank > 1 %}
+        <small>Còn {{ points_to_next }} điểm để vượt qua người phía trước</small>
+      {% else %}
+        <small>🏆 Bạn đang đứng đầu bảng!</small>
+      {% endif %}
+    </div>
+  </div>
+</div>
   <div class="level-box">
     
     <div class="stats-grid">
