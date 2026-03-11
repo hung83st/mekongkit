@@ -3,9 +3,90 @@
 {% block title %}Trang chủ{% endblock %}
 
 {% block content %}
-<h2>✨ Chào mừng đến với Smart Travel Kit! ✨</h2>
-<p>Trải nghiệm văn hóa đa dạng <b>Kinh</b>, <b>Khmer</b>, <b>Hoa</b> ngay tại Cần Thơ.  
-    Check-in, tích điểm, nhận quà và tham gia mini-game cực vui!</p>
-<a href="{{ url_for('register') }}">🚀 Đăng ký ngay</a> hoặc 
-<a href="{{ url_for('login') }}">🔑 Đăng nhập</a> để bắt đầu.
+<style>
+    /* Nền trang chủ với hiệu ứng tối màu làm nổi bật nội dung */
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("{{ url_for('static', filename='images/home_bg.jpg') }}") no-repeat center center fixed !important;
+        background-size: cover !important;
+        color: #ffffff;
+    }
+    
+    /* Header và Footer trong suốt hoàn toàn trên trang chủ */
+    header, footer {
+        background: transparent !important; 
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: none !important;
+    }
+    header hr, footer hr {
+        display: none !important;
+    }
+    header h1 {
+        text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+    
+    /* Box chứa nội dung chính */
+    .home-content {
+        background: rgba(0, 0, 0, 0.55);
+        padding: 50px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        max-width: 650px;
+        margin: 50px auto;
+        backdrop-filter: blur(12px);
+        animation: floatUp 1.2s ease-in-out;
+    }
+
+    .home-content h2 {
+        color: #ffe0b2; /* Tông màu ngà, bớt chói rực vàng */
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8); /* Tăng độ đổ bóng đen làm nổi chữ thay vì hắt sáng */
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        animation: none !important; /* Tắt hoạt ảnh chớp sáng phát glow */
+    }
+
+    .home-content p {
+        font-size: 1.2em;
+        line-height: 1.8;
+        color: #f1f1f1;
+        margin-bottom: 30px;
+    }
+
+    .home-content b {
+        color: #ffecb3;
+    }
+
+    .home-buttons a.button {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 1.1em;
+        padding: 14px 30px;
+        background: linear-gradient(135deg, #ff6f61, #e64a19);
+        border-radius: 30px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 6px 15px rgba(230, 74, 25, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .home-buttons a.button:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 10px 25px rgba(230, 74, 25, 0.8);
+        background: linear-gradient(135deg, #ff8a80, #ff5722);
+    }
+</style>
+
+<div class="home-content">
+    <h2>✨ Chào mừng đến với Smart Travel Kit! ✨</h2>
+    <p>Trải nghiệm văn hóa đa dạng <b>Kinh</b>, <b>Khmer</b>, <b>Hoa</b> ngay tại Cần Thơ. <br><br>
+       📍 Check-in khám phá các địa điểm <br> 
+       🎁 Tích điểm, nhận quà và tham gia mini-game cực vui!</p>
+    
+    <div class="home-buttons">
+        <a href="{{ url_for('register') }}" class="button">🚀 Đăng ký ngay</a>
+        <a href="{{ url_for('login') }}" class="button">🔑 Đăng nhập</a>
+    </div>
+</div>
 {% endblock %}
