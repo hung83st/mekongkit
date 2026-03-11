@@ -3,15 +3,127 @@
 {% block title %}Đăng ký{% endblock %}
 
 {% block content %}
-<h2>Đăng ký tài khoản</h2>
-<form method="POST">
-    <label for="username">Tên tài khoản:</label><br>
-    <input type="text" name="username" required><br><br>
+<style>
+    /* Đồng bộ nền trang auth với giao diện tối */
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("{{ url_for('static', filename='images/home_bg.jpg') }}") no-repeat center center fixed !important;
+        background-size: cover !important;
+        color: #ffffff;
+    }
+    header, footer {
+        background: transparent !important; 
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: none !important;
+    }
+    header hr, footer hr { display: none !important; }
+    header h1 { text-shadow: 0 4px 12px rgba(0,0,0,0.8); }
+    
+    /* Box chứa form auth */
+    .auth-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        max-width: 450px;
+        margin: 50px auto;
+        backdrop-filter: blur(12px);
+        animation: floatUp 1s ease-in-out;
+    }
 
-    <label for="password">Mật khẩu:</label><br>
-    <input type="password" name="password" required><br><br>
+    .auth-box h2 {
+        color: #ffe0b2;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+        animation: none !important;
+        margin-bottom: 25px;
+    }
 
-    <button type="submit">Đăng ký</button>
-</form>
-<p>Đã có tài khoản? <a href="{{ url_for('login') }}">Đăng nhập</a></p>
+    .auth-box form {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+    .auth-box label {
+        color: #f1f1f1;
+        font-weight: 500;
+        font-size: 1.1em;
+    }
+
+    .auth-box input[type="text"], .auth-box input[type="password"] {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        padding: 12px 15px;
+        font-size: 1em;
+        border-radius: 8px;
+        transition: all 0.3s;
+        margin-bottom: 15px;
+    }
+
+    .auth-box input[type="text"]:focus, .auth-box input[type="password"]:focus {
+        background: rgba(255,255,255,0.2);
+        border-color: #ffda75;
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 218, 117, 0.4);
+    }
+
+    .auth-box button {
+        background: linear-gradient(135deg, #ff6f61, #e64a19);
+        color: white;
+        font-weight: bold;
+        padding: 14px 20px;
+        border-radius: 30px;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        border: none;
+        margin-top: 5px;
+        box-shadow: 0 6px 15px rgba(230, 74, 25, 0.5);
+        width: 100%;
+    }
+
+    .auth-box button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #ff8a80, #ff5722);
+        box-shadow: 0 10px 20px rgba(230, 74, 25, 0.8);
+    }
+
+    .auth-links {
+        margin-top: 25px;
+        color: #e2e8f0;
+    }
+
+    .auth-links a {
+        color: #ffda75;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .auth-links a:hover {
+        color: #ffcc33;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="auth-box">
+    <h2>Đăng ký tài khoản</h2>
+    
+    <form method="POST">
+        <label for="username">Tên tài khoản:</label><br>
+        <input type="text" name="username" required><br>
+
+        <label for="password">Mật khẩu:</label><br>
+        <input type="password" name="password" required><br>
+
+        <button type="submit">Đăng ký</button>
+    </form>
+    
+    <div class="auth-links">
+        <p>Đã có tài khoản? <a href="{{ url_for('login') }}">Đăng nhập</a></p>
+    </div>
+</div>
 {% endblock %}
