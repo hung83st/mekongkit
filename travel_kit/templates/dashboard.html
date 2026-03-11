@@ -3,10 +3,25 @@
 
 {% block content %}
 <style>
-  body {
+  /* body {
     background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
     animation: fadeIn 0.8s ease-in-out;
+  } */
+
+    /* Đồng bộ nền tối */
+  body {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("{{ url_for('static', filename='images/home_bg.jpg') }}") no-repeat center center fixed !important;
+      background-size: cover !important;
+      color: #ffffff;
+      animation: fadeIn 0.8s ease-in-out;
   }
+  header, footer {
+      background: transparent !important; 
+      box-shadow: none !important;
+      border: none !important;
+  }
+  header hr, footer hr { display: none !important; }
+  header h1 { text-shadow: 0 4px 12px rgba(0,0,0,0.8); }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
