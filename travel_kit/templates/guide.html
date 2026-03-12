@@ -3,22 +3,131 @@
 {% block title %}Hướng dẫn sử dụng{% endblock %}
 
 {% block content %}
-<h2>📘 Hướng dẫn sử dụng Smart Travel Kit</h2>
+<style>
+    /* Đồng bộ nền tối */
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("{{ url_for('static', filename='images/home_bg.jpg') }}") no-repeat center center fixed !important;
+        background-size: cover !important;
+        color: #ffffff;
+    }
+    header, footer {
+        background: transparent !important; 
+        box-shadow: none !important;
+        border: none !important;
+    }
+    header hr, footer hr { display: none !important; }
+    header h1 { text-shadow: 0 4px 12px rgba(0,0,0,0.8); }
 
-<p>Smart Travel Kit giúp bạn khám phá văn hóa và du lịch Cần Thơ một cách thú vị, tiện lợi và tương tác.  
-Dưới đây là các bước để bạn bắt đầu trải nghiệm:</p>
+    /* Nội dung dạng thẻ kính (Glassmorphism) */
+    .guide-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        max-width: 700px;
+        margin: 50px auto;
+        backdrop-filter: blur(12px);
+        animation: floatUp 1s ease-in-out;
+        text-align: left;
+    }
 
-<ol>
-    <li><b>Đăng ký tài khoản</b> – Nhấn vào nút 📝 <b>Đăng ký</b> ở góc trên để tạo tài khoản mới.</li>
-    <li><b>Đăng nhập</b> – Sử dụng tài khoản vừa tạo để truy cập Dashboard.</li>
-    <!-- <li><b>Check-in địa điểm</b> – Tại Dashboard, chọn các địa điểm du lịch (Bến Ninh Kiều, Chợ nổi Cái Răng, …) để tích điểm.</li> -->
-    <li><b>Tham gia Mini Game</b> – Vào mục 🎮 <b>Mini Game</b> để trả lời câu hỏi văn hóa và nhận thêm điểm thưởng.</li>
-    <!-- <li><b>Đổi quà</b> – Khi đạt đủ điểm, bạn có thể nhận phần quà hấp dẫn tại mục 🎁 <b>Quà tặng</b> (sắp ra mắt).</li> -->
-    <li><b>Khám phá thêm</b> – Tham gia cộng đồng du lịch để chia sẻ trải nghiệm và hình ảnh của bạn tại Cần Thơ.</li>
-</ol>
+    .guide-box h2 {
+        color: #ffe0b2;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+        text-align: center;
+        margin-bottom: 20px;
+        animation: none !important;
+    }
 
-<!-- <p>🎯 <b>Mẹo nhỏ:</b> Càng tích cực check-in và chơi minigame, bạn càng dễ mở khóa phần thưởng đặc biệt!</p> -->
+    .guide-box .intro-text {
+        color: #e2e8f0;
+        text-align: center;
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
 
-<p>💡 Nếu bạn có bất kỳ thắc mắc nào, hãy liên hệ với nhóm phát triển Travel Kit Team để được hỗ trợ.</p>
+    .guide-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .step-item {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 15px 20px;
+        border-radius: 12px;
+        border-left: 4px solid #ffda75;
+        transition: transform 0.3s, background 0.3s;
+    }
+
+    .step-item:hover {
+        transform: translateX(10px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .step-item b {
+        color: #ffda75;
+        font-size: 1.1em;
+    }
+
+    .step-item p {
+        margin: 5px 0 0 0;
+        color: #f1f1f1;
+    }
+
+    .guide-footer {
+        margin-top: 30px;
+        text-align: center;
+        color: #ffcc33;
+        font-style: italic;
+    }
+    
+    .back-btn {
+        display: block;
+        width: max-content;
+        margin: 20px auto 0;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .back-btn:hover {
+        background: #ff6f61;
+        border-color: #ff6f61;
+        box-shadow: 0 5px 15px rgba(255, 111, 97, 0.5);
+    }
+</style>
+
+<div class="guide-box">
+    <h2>📘 Hướng dẫn sử dụng</h2>
+    <p class="intro-text">Smart Travel Kit giúp bạn khám phá văn hóa và du lịch Cần Thơ một cách thú vị, tiện lợi và tương tác. Dưới đây là cách bắt đầu:</p>
+
+    <div class="guide-steps">
+        <div class="step-item">
+            <b>1. Đăng ký & Đăng nhập</b>
+            <p>Tạo tài khoản nhanh chóng để bắt đầu tích lũy hành trình cá nhân.</p>
+        </div>
+        <div class="step-item">
+            <b>2. Khám phá & Check-in</b>
+            <p>Đến thăm các địa điểm văn hóa, quét mã hoặc xác nhận để nhận điểm.</p>
+        </div>
+        <div class="step-item">
+            <b>3. Chơi Mini Game</b>
+            <p>Trả lời các câu hỏi văn hóa địa phương để giành thêm nhiều điểm thưởng hằng ngày.</p>
+        </div>
+        <div class="step-item">
+            <b>4. Nhận điểm & Đổi quà</b>
+            <p>Thăng hạng cấp độ của bạn và quy đổi điểm ra những phần quà lưu niệm ý nghĩa.</p>
+        </div>
+    </div>
+
+    <p class="guide-footer">💡 Mọi thắc mắc, vui lòng liên hệ Travel Kit Team để được hỗ trợ.</p>
+    
+    <a href="{{ url_for('index') }}" class="back-btn">← Quay về Trang chủ</a>
+</div>
 {% endblock %}
-
