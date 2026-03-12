@@ -2,37 +2,206 @@
 {% block title %}Phần quà{% endblock %}
 
 {% block content %}
+<style>
+    /* Đồng bộ nền tối */
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("{{ url_for('static', filename='images/home_bg.jpg') }}") no-repeat center center fixed !important;
+        background-size: cover !important;
+        color: #ffffff;
+    }
+    header, footer {
+        background: transparent !important; 
+        box-shadow: none !important;
+        border: none !important;
+    }
+    header hr, footer hr { display: none !important; }
+    header h1 { text-shadow: 0 4px 12px rgba(0,0,0,0.8); }
 
-<div style="max-width: 900px; margin: 40px auto; text-align: center;">
+    /* Glass box */
+    .rewards-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        max-width: 800px;
+        margin: 50px auto;
+        backdrop-filter: blur(12px);
+        animation: floatUp 1s ease-in-out;
+    }
+
+    .rewards-box h2 {
+        color: #ffe0b2;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+        text-align: center;
+        margin-bottom: 20px;
+        animation: none !important;
+    }
+
+    .rewards-subtitle {
+        color: #e2e8f0;
+        text-align: center;
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .rewards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+    }
+
+    .reward-card {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 15px 20px;
+        border-radius: 12px;
+        border-left: 4px solid #ffda75;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: transform 0.3s, background 0.3s;
+    }
+
+    .reward-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .reward-icon {
+        font-size: 2em;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    .reward-info h3 {
+        color: #ffda75;
+        font-size: 1.1em;
+        margin: 0 0 5px 0;
+    }
+
+    .reward-info p {
+        color: #f1f1f1;
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+    .reward-card.legendary {
+        border-left: 4px solid #facc15;
+        background: linear-gradient(90deg, rgba(250, 204, 21, 0.1), transparent);
+    }
+
+    .reward-card.legendary h3 {
+        color: #facc15;
+        text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+    }
+
+    .rewards-footer {
+        margin-top: 30px;
+        text-align: center;
+        color: #ffcc33;
+        font-weight: bold;
+    }
+    
+    .back-btn {
+        display: block;
+        width: max-content;
+        margin: 20px auto 0;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+    }
+
+    .back-btn:hover {
+        background: #ff6f61;
+        border-color: #ff6f61;
+        box-shadow: 0 5px 15px rgba(255, 111, 97, 0.5);
+    }
+</style>
+
+<div class="rewards-box">
     <h2>🎁 Phần quà theo cấp độ</h2>
-    <p>Check-in – tích điểm – nâng cấp để nhận quà hấp dẫn!</p>
+    <p class="rewards-subtitle">Check-in – tích điểm – nâng cấp để nhận những quà tặng giá trị!</p>
 
-    <ul style="list-style: none; padding: 0;">
-        <li>🌱 Người mới khám phá: Sticker Cần Thơ</li>
-        <li>🧭 Nhà thám hiểm trẻ: Móc khóa du lịch</li>
-        <li>🏮 Người du hành văn hóa: Postcard văn hóa</li>
-        <li>🏝️ Đại sứ văn hóa: Voucher quán cà phê</li>
-        <li>📜 Nhà nghiên cứu di sản: Vé du thuyền sông Hậu</li>
-        <li>🏆 Huyền thoại Cần Thơ: Quà lưu niệm đặc biệt</li>
-        <li>🏯 Bậc Thầy Văn Hóa: 
-            Áo thun / túi tote “Cần Thơ – Gạo trắng nước trong”
-        </li>
+    <div class="rewards-grid">
+        <div class="reward-card">
+            <span class="reward-icon">🌱</span>
+            <div class="reward-info">
+                <h3>Người mới khám phá</h3>
+                <p>Sticker Cần Thơ siêu dễ thương</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🧭</span>
+            <div class="reward-info">
+                <h3>Nhà thám hiểm trẻ</h3>
+                <p>Móc khóa du lịch</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🏮</span>
+            <div class="reward-info">
+                <h3>Người du hành văn hóa</h3>
+                <p>Postcard văn hóa đặc biệt</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🏝️</span>
+            <div class="reward-info">
+                <h3>Đại sứ văn hóa</h3>
+                <p>Voucher mua nước uống / cà phê</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">📜</span>
+            <div class="reward-info">
+                <h3>Nhà nghiên cứu di sản</h3>
+                <p>Vé du thuyền ngắm hoàng hôn sông Hậu</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🏆</span>
+            <div class="reward-info">
+                <h3>Huyền thoại Cần Thơ</h3>
+                <p>Quà lưu niệm đặc biệt giới hạn</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🏯</span>
+            <div class="reward-info">
+                <h3>Bậc Thầy Văn Hóa</h3>
+                <p>Áo thun hoặc túi tote "Cần Thơ"</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🐉</span>
+            <div class="reward-info">
+                <h3>Danh Nhân Miền Tây</h3>
+                <p>Bộ sổ tay, bookmark và bản đồ Cần Thơ</p>
+            </div>
+        </div>
+        <div class="reward-card">
+            <span class="reward-icon">🌊</span>
+            <div class="reward-info">
+                <h3>Đại Hiền Giả Sông Hậu</h3>
+                <p>Tour sinh thái / trải nghiệm Workshop</p>
+            </div>
+        </div>
+        <div class="reward-card legendary">
+            <span class="reward-icon">👑</span>
+            <div class="reward-info">
+                <h3>Huyền Thoại Bất Diệt</h3>
+                <p>Cúp vinh danh + Chứng nhận VIP + Quà độc quyền</p>
+            </div>
+        </div>
+    </div>
 
-        <li>🐉 Danh Nhân Miền Tây: 
-            Bộ quà văn hóa cao cấp (sổ tay + bookmark + bản đồ du lịch Cần Thơ)
-        </li>
-
-        <li>🌊 Đại Hiền Giả Sông Hậu: 
-            Trải nghiệm đặc biệt (tour sinh thái / du thuyền VIP / workshop văn hóa)
-        </li>
-
-        <li>👑Huyền Thoại Bất Diệt: 
-            <span style="color:#d97706; font-weight:700;">
-                Cúp vinh danh + chứng nhận danh hiệu + quà lưu niệm độc quyền
-            </span>
-        </li>
-    </ul>
-
-    <p style="margin-top:20px;">👉 Đăng nhập để kiểm tra quà bạn đã mở khóa!</p>
+    <p class="rewards-footer">👉 Đăng nhập để kiểm tra những món quà bạn đã mở khóa!</p>
+    
+    <a href="{{ url_for('index') }}" class="back-btn">← Quay về Trang chủ</a>
 </div>
 {% endblock %}
