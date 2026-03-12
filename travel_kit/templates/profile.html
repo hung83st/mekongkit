@@ -29,44 +29,81 @@
 <style>
 
 /* --- Nút quay lại Dashboard --- */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url("{{ url_for('static', filename='images/home_bg.jpg') }}")
+    no-repeat center center fixed !important;
+    background-size: cover !important;
+    color: #ffffff;
+}
+
+header, footer {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+header hr, footer hr {
+    display: none !important;
+}
+
+header h1 {
+    text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+
+/* ===== Nút quay lại ===== */
+
 .back-btn-container {
     position: absolute;
     top: 20px;
     left: 30px;
 }
+
 .back-btn {
     display: inline-block;
     text-decoration: none;
-    background-color: #3498db;
+    background: rgba(255,255,255,0.1);
     color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 20px;
     font-weight: bold;
-    transition: background-color 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .back-btn:hover {
-    background-color: #217dbb;
+    background: #ff6f61;
+    border-color: #ff6f61;
+    box-shadow: 0 5px 15px rgba(255,111,97,0.5);
 }
+
+/* ===== Container ===== */
+
 .profile-container {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 60px;
 }
+
+/* ===== Glass Card ===== */
 
 .profile-card {
     display: inline-block;
-    background: #fff8e1;
-    padding: 25px 40px;
+    background: rgba(0,0,0,0.6);
+    padding: 30px 50px;
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
     font-size: 1.1em;
     line-height: 1.8;
-    color: #333;
+    color: #f1f1f1;
+    animation: floatUp 1s ease-in-out;
 }
 
+/* ===== Badge ===== */
+
 .badge-display {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .badge-box {
@@ -80,10 +117,24 @@
     animation: glowBadge 3s infinite ease-in-out;
 }
 
+/* ===== Animation ===== */
+
 @keyframes glowBadge {
-    0%, 100% { box-shadow: 0 0 10px rgba(255, 214, 100, 0.7); }
-    50% { box-shadow: 0 0 20px rgba(255, 255, 150, 1); }
+    0%,100% { box-shadow: 0 0 10px rgba(255,214,100,0.7); }
+    50% { box-shadow: 0 0 20px rgba(255,255,150,1); }
+}
+
+@keyframes floatUp {
+    from {
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 </style>
 {% endblock %}
+
