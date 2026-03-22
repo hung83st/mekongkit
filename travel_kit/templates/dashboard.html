@@ -802,11 +802,11 @@
           {% elif user.points < 250 %} 🧭
           {% elif user.points < 500 %} 🏮
           {% elif user.points < 750 %} 🏝️
-          {% elif user.points < 1000 %} 📜
-          {% elif user.points < 5000 %} 🏆
-          {% elif user.points < 10000 %} 🏯
-          {% elif user.points < 20000 %} 🐉
-          {% elif user.points < 50000 %} 🌊
+          {% elif user.points < 850 %} 📜
+          {% elif user.points < 1000 %} 🏆
+          {% elif user.points < 1150 %} 🏯
+          {% elif user.points < 1300 %} 🐉
+          {% elif user.points < 1450 %} 🌊
           {% else %} 👑
           {% endif %}
         </div>
@@ -817,11 +817,11 @@
             {% elif user.points < 250 %} Cấp độ 2
             {% elif user.points < 500 %} Cấp độ 3
             {% elif user.points < 750 %} Cấp độ 4
-            {% elif user.points < 1000 %} Cấp độ 5
-            {% elif user.points < 5000 %} Cấp độ 6
-            {% elif user.points < 10000 %} Cấp độ 7
-            {% elif user.points < 20000 %} Cấp độ 8
-            {% elif user.points < 50000 %} Cấp độ 9
+            {% elif user.points < 850 %} Cấp độ 5
+            {% elif user.points < 1000 %} Cấp độ 6
+            {% elif user.points < 1150 %} Cấp độ 7
+            {% elif user.points < 1300 %} Cấp độ 8
+            {% elif user.points < 1450 %} Cấp độ 9
             {% else %} Cấp độ 10
             {% endif %}
           </div>
@@ -831,11 +831,11 @@
             {% elif user.points < 250 %} Nhà thám hiểm trẻ
             {% elif user.points < 500 %} Người du hành văn hóa
             {% elif user.points < 750 %} Đại sứ văn hóa
-            {% elif user.points < 1000 %} Nhà nghiên cứu di sản
-            {% elif user.points < 5000 %} Huyền thoại Cần Thơ
-            {% elif user.points < 10000 %} Bậc Thầy Văn Hóa
-            {% elif user.points < 20000 %} Danh Nhân Miền Tây
-            {% elif user.points < 50000 %} Đại Hiền Giả Sông Hậu
+            {% elif user.points < 850 %} Nhà nghiên cứu di sản
+            {% elif user.points < 1000 %} Huyền thoại Cần Thơ
+            {% elif user.points < 1150 %} Bậc Thầy Văn Hóa
+            {% elif user.points < 1300 %} Danh Nhân Miền Tây
+            {% elif user.points < 1450 %} Đại Hiền Giả Sông Hậu
             {% else %} Huyền thoại bất diệt
             {% endif %}
           </div>
@@ -863,16 +863,16 @@
         {{ ((user.points - 250) / 250 * 100) | round(0) }}%
       {% elif user.points < 750 %}
         {{ ((user.points - 500) / 250 * 100) | round(0) }}%
+      {% elif user.points < 850 %}
+        {{ ((user.points - 750) / 100 * 100) | round(0) }}%
       {% elif user.points < 1000 %}
-        {{ ((user.points - 750) / 250 * 100) | round(0) }}%
-      {% elif user.points < 5000 %}
-        {{ ((user.points - 1000) / 4000 * 100) | round(0) }}%
-      {% elif user.points < 10000 %}
-        {{ ((user.points - 5000) / 5000 * 100) | round(0) }}%
-      {% elif user.points < 20000 %}
-        {{ ((user.points - 10000) / 10000 * 100) | round(0) }}%
-      {% elif user.points < 50000 %}
-        {{ ((user.points - 20000) / 30000 * 100) | round(0) }}%
+        {{ ((user.points - 850) / 150 * 100) | round(0) }}%
+      {% elif user.points < 1150 %}
+        {{ ((user.points - 1000) / 150 * 100) | round(0) }}%
+      {% elif user.points < 1300 %}
+        {{ ((user.points - 1150) / 150 * 100) | round(0) }}%
+      {% elif user.points < 1450 %}
+        {{ ((user.points - 1300) / 150 * 100) | round(0) }}%
       {% else %}
         100%
       {% endif %}">
@@ -896,24 +896,24 @@
         ⬆️ Còn {{ 750 - user.points }} điểm
         <span>· Cấp tiếp: 📜 Nhà nghiên cứu di sản</span>
     
-      {% elif user.points < 1000 %}
-        ⬆️ Còn {{ 1000 - user.points }} điểm
+      {% elif user.points < 850 %}
+        ⬆️ Còn {{ 850 - user.points }} điểm
         <span>· Cấp tiếp: 🏆 Huyền thoại Cần Thơ</span>
     
-      {% elif user.points < 5000 %}
-        ⬆️ Còn {{ 5000 - user.points }} điểm
+      {% elif user.points < 1000 %}
+        ⬆️ Còn {{ 1000 - user.points }} điểm
         <span>· Cấp tiếp: 🏯 Bậc Thầy Văn Hóa</span>
     
-      {% elif user.points < 10000 %}
-        ⬆️ Còn {{ 10000 - user.points }} điểm
+      {% elif user.points < 1150 %}
+        ⬆️ Còn {{ 1150 - user.points }} điểm
         <span>· Cấp tiếp: 🐉 Danh Nhân Miền Tây</span>
     
-      {% elif user.points < 20000 %}
-        ⬆️ Còn {{ 20000 - user.points }} điểm
+      {% elif user.points < 1300 %}
+        ⬆️ Còn {{ 1300 - user.points }} điểm
         <span>· Cấp tiếp: 🌊 Đại Hiền Giả Sông Hậu</span>
     
-      {% elif user.points < 50000 %}
-        ⬆️ Còn {{ 50000 - user.points }} điểm
+      {% elif user.points < 1450 %}
+        ⬆️ Còn {{ 1450 - user.points }} điểm
         <span>· Cấp tiếp: 👑 Huyền thoại bất diệt</span>
     
       {% else %}
@@ -932,15 +932,15 @@
   <p>🎉 Cấp hiện tại: <strong>Người du hành văn hóa 🏮</strong></p>
 {% elif user.points < 750 %}
   <p>🎉 Cấp hiện tại: <strong>Đại sứ văn hóa 🏝️</strong></p>
-{% elif user.points < 1000 %}
+{% elif user.points < 850 %}
   <p>🎉 Cấp hiện tại: <strong>Nhà nghiên cứu di sản 📜</strong></p>
-{% elif user.points < 5000 %}
+{% elif user.points < 1000 %}
   <p>🏆 Cấp hiện tại: <strong>Huyền thoại Cần Thơ 🏆</strong></p>
-{% elif user.points < 10000 %}
+{% elif user.points < 1150 %}
   <p>🏯 Cấp hiện tại: <strong>Bậc Thầy Văn Hóa 🏯</strong></p>
-{% elif user.points < 20000 %}
+{% elif user.points < 1300 %}
   <p>🐉 Cấp hiện tại: <strong>Danh Nhân Miền Tây 🐉</strong></p>
-{% elif user.points < 50000 %}
+{% elif user.points < 1450 %}
   <p>🌊 Cấp hiện tại: <strong>Đại Hiền Giả Sông Hậu 🌊</strong></p>
 {% else %}
   <p>👑 Cấp hiện tại: <strong>Huyền Thoại Bất Diệt 👑</strong></p>
